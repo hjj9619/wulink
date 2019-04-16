@@ -1,11 +1,14 @@
 let fs = require('fs');
 let conf = require('../conf/conf');
+let request = require("request");
+let path = require('path');
+
 
 exports = module.exports = {
     getLocalToken: function(){
         return new Promise(function( resolve, reject ){
 
-            fs.readFile('../conf/access.txt', 'utf-8', function( err, data ){
+            fs.readFile( path.join( __dirname, '../conf/access.txt' ), 'utf-8', function( err, data ){
 
                 if( err ){
                     reject( err );
@@ -29,7 +32,7 @@ exports = module.exports = {
                             }else{
                             //  console.log(typeof body ); // Object
                             let token = body.data.access_token;
-                            fs.writeFile('../conf/access.txt', token, function( err ){
+                            fs.writeFile( path.join( __dirname, '../conf/access.txt' ), token, function( err ){
                             if( err ) console.log( err );
                             })
                             }  
