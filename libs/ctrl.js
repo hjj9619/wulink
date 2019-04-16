@@ -14,9 +14,6 @@ let getLocalToken = require('../util/getAccessToken').getLocalToken;
 //pwd PWD
 
 
-
-
-
 function connecteWifi ( devType, id, cmdType, cmd, ssid, pwd ){
   return new Promise(function( resolve, reject ){
     getLocalToken().then(function(data){

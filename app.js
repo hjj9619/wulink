@@ -16,8 +16,6 @@ app.use(bodyParser.text({ type: 'text/html' }))
 app.use(bodyParser.text({ type: 'text/plain' }))
 
 
-
-
 app.set('views', path.join(__dirname, 'views'));
 app.set( 'view engine', 'ejs' );
 
