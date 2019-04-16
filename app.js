@@ -33,10 +33,18 @@ app.listen(3000);
 
 // getAccessToken();
 
+
+
+// 空调首页
 app.get('/air', function( req, res ){
   
   getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
     // console.log( body );
+    let online;
+    getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( data ){
+      online = data;
+    })
+    body.data.onlin = 0;
     res.render( 'index', body.data );
     
   }).catch(function( err ){
@@ -50,12 +58,8 @@ app.get('/air', function( req, res ){
 app.post('/air/on', function( req, res){
   req.on('data', function( data ){
     
-    
     // let obj = JSON.parse( data );
     // console.log( obj );
-
-
-    // request.post("")
 
     //808600016928
     setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 0 );
@@ -113,6 +117,10 @@ app.get('/air/wifi', function( req, res ){
     if( data.errcode === 0 ){
       console.log( "WIFI连接成功！" );
       res.end("success");
+
+      // 如果 WIIF 连接成功，就跳转回主页
+      res.redirect('/air');
+
     }
 
 

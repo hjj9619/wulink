@@ -8,14 +8,17 @@
 
     <button id="on"> 打开空调 </button>
     <button id="off"> 关闭空调 </button>
-    <button id="wifi"> 配置 WiFi </button>
+    <!-- <button id="wifi"> 配置 WiFi </button> -->
+    
     <ul>
+      
       <li> Temp - <%= temp %>  </li>
       <li> Mode - <%= mode %>  </li>
       <li> Direct - <%= direct %>  </li>
       <li> Wind - <%= wind %>  </li>
       <li> Onoff - <%= onoff %>  </li>
-      <li> Key - <%= key %></li>
+      <!-- <li> Key - <%= key %> </li> -->
+
     </ul>
 
     <input type="text" id="ssid">
@@ -39,22 +42,22 @@
       });
     });
 
-    let conf = {
-      "SSID": "", 
-      "PWD": ""
-    }
-    $('#ssid').change(function(){
-      conf.SSID = $('#ssid').val();
-    })
-    $('#pwd').change(function(){
-      conf.PWD = $('#pwd').val();
-    })
-    $("#wifi").click(function(){
-      $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
-        console.log( data );
-        console.log( status );
-      });
-    });
+    // let conf = {
+    //   "SSID": "", 
+    //   "PWD": ""
+    // }
+    // $('#ssid').change(function(){
+    //   conf.SSID = $('#ssid').val();
+    // })
+    // $('#pwd').change(function(){
+    //   conf.PWD = $('#pwd').val();
+    // })
+    // $("#wifi").click(function(){
+    //   $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
+    //     console.log( data );
+    //     console.log( status );
+    //   });
+    // });
 
   </script>
 </html>
