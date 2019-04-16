@@ -24,7 +24,6 @@
 
   <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
   <script>
-    
 
     $("#on").click(function(){
       $.post("/air/on", JSON.stringify({data: "打开空调"}), function(data,status){
@@ -41,9 +40,15 @@
     });
 
     let conf = {
-      "SSID": $('#ssid').val(), 
-      "PWD": $('#pwd').val()
+      "SSID": "", 
+      "PWD": ""
     }
+    $('#ssid').change(function(){
+      conf.SSID = $('#ssid').val();
+    })
+    $('#pwd').change(function(){
+      conf.pwd = $('#pwd').val();
+    })
     $("#wifi").click(function(){
       $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
         console.log( data );
