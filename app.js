@@ -128,6 +128,10 @@ app.get('/air/wifi', function( req, res ){
       res.render('main')
     }
   
+  }, function( err ){
+    if( err ){
+      console.log( err );
+    }
   }).catch(function( err ){
     if( err ) console.log( err );
   })
