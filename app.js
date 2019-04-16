@@ -112,6 +112,7 @@ app.get('/air/wifi', function( req, res ){
     console.log( data );
     if( data.errcode === 0 ){
       console.log( "WIFI连接成功！" );
+      res.send("success");
     }
 
 
