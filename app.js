@@ -24,11 +24,12 @@ getLocalToken().then(function(data){
     sign: SIGN,
     devtype: "Wukong",
     cmdtype: "get",
-    cmd: 'online'
+    cmd: "device_info"
 
   }
+  let str = JSON.stringify( formData );
   let url = conf.deviceUrl + "808600016928";
-  request.get(url, { formData: formData }, function( err, response, body ){
+  request.get(url, { formData: str }, function( err, response, body ){
     console.log( body );
   })
 
