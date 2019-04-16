@@ -84,7 +84,8 @@ function connecteWifi ( devType, id, cmdType, cmd, ssid, pwd ){
 
 
 function setDeviceInfo ( devType, id, cmdType, cmd, onoff ){
-    getLocalToken().then(function(data){
+    return new Promise( function( resolve, reject ){
+      getLocalToken().then(function(data){
         // console.log( data );
       
         let now = new Date().getTime();
@@ -118,16 +119,17 @@ function setDeviceInfo ( devType, id, cmdType, cmd, onoff ){
         request.post(url2, {formData: formData, json: true}, function( err, response, body ){
           if( !err ){
             // console.log( response );
-            console.log( body );
+            resolve( body );
           }else{
-            console.log( err );
+            reject( err );
           }
         })
       
       
-      }).catch(function( err ){
-        if( err ) console.log( err );
       })
+    }).catch(function( err ){
+      if( err ) console.log( err );
+    })
 }
 
 

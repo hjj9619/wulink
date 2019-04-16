@@ -132,7 +132,9 @@ app.post('/air/red', function( req, res){
     // console.log( obj );
 
     //808600016928
-    setDeviceInfo( "Wukong", "808600016928", "set", "match_process", 0 );
+    setDeviceInfo( "Wukong", "808600016928", "set", "match_process", 0 ).then(function( data ){
+      console.log( data );
+    });
 
     res.send("数据已成功接收！");
 
