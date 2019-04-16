@@ -101,3 +101,7 @@ app.post('/air/wifi', function( req, res){
 
 })
 
+app.get('/air/wifi', function( req, res ){
+  console.log( req.body );
+  res.render('wifi')
+})

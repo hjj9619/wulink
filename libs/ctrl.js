@@ -135,8 +135,6 @@ function getDeviceInfo ( devType, id, cmdType, cmd ){
             let now = new Date().getTime();
             let nonce = "ASaSJLLJIOqeoiaq"
             let SIGN = md5(conf.appId + data + nonce + now);
-    
-    
         
     
             let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
