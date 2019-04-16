@@ -17,37 +17,41 @@ function connecteWifi ( devType, id, cmdType, cmd, ssid, pwd ){
   getLocalToken().then(function(data){
       // console.log( data );
     
-      let now = new Date().getTime();
-      let nonce = "ASaSJLLJIOqeoiaq"
-      let SIGN = md5(conf.appId + data + nonce + now);
+      return new Promise(function( resolve, reject ){
+        let now = new Date().getTime();
+        let nonce = "ASaSJLLJIOqeoiaq"
+        let SIGN = md5(conf.appId + data + nonce + now);
 
 
-      let formData = {
+        let formData = {
 
-        "appid": conf.appId,
-        "nonce": nonce,
-        "timestamp": now,
-        "sign": SIGN,
-        "devtype": devType,
-        "cmdtype": cmdType,
-        "cmd": cmd,
-        "ssid": ssid,
-        "pwd": pwd
+          "appid": conf.appId,
+          "nonce": nonce,
+          "timestamp": now,
+          "sign": SIGN,
+          "devtype": devType,
+          "cmdtype": cmdType,
+          "cmd": cmd,
+          "ssid": ssid,
+          "pwd": pwd
 
-      }
-
-      let url2 = conf.deviceUrl + id;
-      let str = JSON.stringify( formData );
-
-      // let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
-      
-      request.post(url2, {formData: formData, json: true}, function( err, response, body ){
-        if( !err ){
-          // console.log( response );
-          console.log( body );
-        }else{
-          console.log( err );
         }
+
+        let url2 = conf.deviceUrl + id;
+        let str = JSON.stringify( formData );
+
+        // let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
+        
+        request.post(url2, {formData: formData, json: true}, function( err, response, body ){
+          if( !err ){
+            // console.log( response );
+            // console.log( body );
+            resolve( body );
+          }else{
+            // console.log( err );
+            reject( err );
+          }
+        })
       })
     
     

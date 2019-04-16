@@ -85,23 +85,32 @@ app.post('/air/off', function( req, res){
 
 })
 
-// 给悟空连 WIFI
-app.post('/air/wifi', function( req, res){
-  req.on('data', function( data ){
-    
-    let obj = JSON.parse( data );
-    console.log( obj );
-
-    //808600016928
-    connecteWifi( "Wukong", "808600016928", "set", "ssid", obj.SSID, obj.PWD );
-
-    res.send("数据已成功接收！");
-
-  })
-
-})
 
 app.get('/air/wifi', function( req, res ){
-  console.log( req.body );
+  // console.log( req.body );
+
+  let id = req.query.sn;
   res.render('wifi')
+
+  // 给悟空连 WIFI
+  return new Promise(function( resolve, reject ){
+    app.post('/air/wifi', function( req, res){
+      req.on('data', function( data ){
+        
+        let obj = JSON.parse( data );
+        console.log( obj );
+  
+        //808600016928
+        connecteWifi( "Wukong", id, "set", "ssid", obj.SSID, obj.PWD ).then(function( data ){
+          console.log( data );
+        }, function( err ){
+          if( err ) console.log( err );
+        });
+  
+        res.send("数据已成功接收！");
+  
+      })
+  
+    })
+  })
 })
