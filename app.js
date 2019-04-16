@@ -14,7 +14,7 @@ app.listen(3000);
 
 
 getLocalToken().then(function(data){
-  console.log( data );
+  // console.log( data );
 
   let now = new Date().getTime();
   let nonce = "ASaSJLLJIOqeoiaq"
@@ -36,6 +36,8 @@ getLocalToken().then(function(data){
     if( !err ){
       // console.log( response );
       console.log( body );
+    }else{
+      console.log( err );
     }
   })
 
