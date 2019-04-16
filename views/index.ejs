@@ -5,6 +5,7 @@
     <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
   </head>
   <body>
+
     <button id="on"> 打开空调 </button>
     <button id="off"> 关闭空调 </button>
     <button id="wifi"> 配置 WiFi </button>
@@ -16,6 +17,9 @@
       <li> Onoff - <%= onoff %>  </li>
       <li> Key - <%= key %></li>
     </ul>
+
+    <input type="text" id="ssid">
+    <input type="text" id="pwd">
   </body>
 
   <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
@@ -36,8 +40,12 @@
       });
     });
 
+    let conf = {
+      "SSID": $('#ssid').val(), 
+      "PWD": $('#pwd').val()
+    }
     $("#wifi").click(function(){
-      $.post("/air/wifi", JSON.stringify({"SSID": "XCKJ", "PWD": "XCKJ8888"}), function(data,status){
+      $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
         console.log( data );
         console.log( status );
       });
