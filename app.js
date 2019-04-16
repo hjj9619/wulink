@@ -31,9 +31,10 @@ getLocalToken().then(function(data){
 
   // let str = JSON.stringify( formData );
   let url = conf.deviceUrl + "808600016928?" + `appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=Wukong&cmdtype=get&cmd=device_info` ;
-  request.get(url, {json: true}, function( err, response, body ){
+  let url2 = conf.deviceUrl + "808600016928";
+  request.get(url2, {formData:formData, json: true}, function( err, response, body ){
     if( !err ){
-      console.log( response );
+      // console.log( response );
       console.log( body );
     }
   })
