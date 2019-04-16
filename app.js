@@ -112,11 +112,30 @@ app.get('/air/wifi', function( req, res ){
     console.log( data );
     if( data.errcode === 0 ){
       console.log( "WIFI连接成功！" );
-      res.send("success");
+      res.end("success");
     }
 
 
   }).catch(function( err ){
     if( err ) console.log( err );
   })
+})
+
+
+
+// match_process
+
+app.post('/air/red', function( req, res){
+  req.on('data', function( data ){
+    
+    // let obj = JSON.parse( data );
+    // console.log( obj );
+
+    //808600016928
+    setDeviceInfo( "Wukong", "808600016928", "set", "match_process", 0 );
+
+    res.send("数据已成功接收！");
+
+  })
+
 })

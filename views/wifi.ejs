@@ -12,6 +12,7 @@
     <input type="text" id="ssid">
     <input type="text" id="pwd">
     <button id="wifi"> 配置 WiFi </button>
+    <button id="red">匹配红外遥控器</button>
   </body>
 
   <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
@@ -31,7 +32,13 @@
     $("#wifi").click(function(){
       $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
         console.log( data );
-        console.log( status );
+        console.log( status + "AJAX" );
+      });
+    });
+    $("#red").click(function(){
+      $.post("/air/red", function(data,status){
+        console.log( data );
+        console.log( status + "AJAX" );
       });
     });
 
