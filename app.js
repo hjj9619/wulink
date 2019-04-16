@@ -1,5 +1,11 @@
 let express = require("express");
 let app = express();
+let ejs = require('ejs');
+
+
+app.set( 'view engine', ejs );
+
+
 let getAccessToken = require('./util/getAccessToken').getAccessToken;
 let getDeviceInfo = require('./libs/ctrl').getDeviceInfo;
 let setDeviceInfo = require('./libs/ctrl').setDeviceInfo;
@@ -12,8 +18,15 @@ app.listen(3000);
 
 // getAccessToken();
 
+app.get('/air', function( req, res, next ){
+  
+  getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
+    console.log( body );
 
-// getDeviceInfo('EleMeter', '101080001561', 'get', 'online');
+    res.render('index', body);
+  });
 
-setDeviceInfo();
+})
 
+
+// setDeviceInfo();
