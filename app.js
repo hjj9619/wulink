@@ -33,5 +33,10 @@ app.get('/air', function( req, res ){
 
 })
 
+app.post('/air', function( req, res){
+  res.status = 200;
+  res.send("hello")
+})
+
 
 // setDeviceInfo();

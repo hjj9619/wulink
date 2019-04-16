@@ -5,6 +5,8 @@
     <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
   </head>
   <body>
+    <button id="on"> 打开空调 </button>
+    <button id="off"> 关闭空调 </button>
     <ul>
       <li> Temp - <%= body.temp %>  </li>
       <li> Mode - <%= body.mode %>  </li>
@@ -14,4 +16,16 @@
       <li> Key - <%= body.key %></li>
     </ul>
   </body>
+
+  <script>
+    
+
+    $("#on").click(function(){
+      $.post("/air", {"name": "test"}, function(data,status){
+        console.log( data );
+        console.log( status );
+      });
+    });
+
+  </script>
 </html>
