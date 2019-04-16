@@ -29,12 +29,12 @@ getLocalToken().then(function(data){
     "cmd": "device_info"
   }
 
-  // let str = JSON.stringify( formData );
-  let url = conf.deviceUrl + "808600016928?" + `appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=Wukong&cmdtype=get&cmd=device_info` ;
+  let str = JSON.stringify( formData );
+  // let url = conf.deviceUrl + "808600016928?" + `appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=Wukong&cmdtype=get&cmd=device_info` ;
   let url2 = conf.deviceUrl + "808600016928";
-  request.get(url2, {formData:formData, json: true}, function( err, response, body ){
+  request.get(url2, {formData: str, json: true}, function( err, response, body ){
     if( !err ){
-      // console.log( response );
+      console.log( response );
       console.log( body );
     }else{
       console.log( err );
