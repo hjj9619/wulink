@@ -47,7 +47,7 @@
       conf.SSID = $('#ssid').val();
     })
     $('#pwd').change(function(){
-      conf.pwd = $('#pwd').val();
+      conf.PWD = $('#pwd').val();
     })
     $("#wifi").click(function(){
       $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
