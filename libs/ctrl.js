@@ -5,7 +5,7 @@ let getLocalToken = require('../util/getAccessToken').getLocalToken;
 
 
 
-function setDeviceInfo (){
+function setDeviceInfo ( devType, id, cmdType, cmd, onoff ){
     getLocalToken().then(function(data){
         // console.log( data );
       
@@ -20,10 +20,10 @@ function setDeviceInfo (){
           "nonce": nonce,
           "timestamp": now,
           "sign": SIGN,
-          "devtype": "Wukong",
-          "cmdtype": "set",
-          "cmd": "air_ctrl",
-          "onoff": 1,
+          "devtype": devType,
+          "cmdtype": cmdType,
+          "cmd": cmd,
+          "onoff": onoff,
           "mode": 1,
           "temp": 10,
           "wind": 0,
@@ -32,7 +32,7 @@ function setDeviceInfo (){
 
         }
 
-        let url2 = conf.deviceUrl + 808600016928;
+        let url2 = conf.deviceUrl + id;
         let str = JSON.stringify( formData );
 
         // let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;

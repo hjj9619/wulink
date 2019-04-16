@@ -2,7 +2,7 @@ let express = require("express");
 let app = express();
 let ejs = require('ejs');
 let path = require("path");
-
+let request = requrie("request");
 let bodyParser = require('body-parser');
 
 
@@ -48,10 +48,36 @@ app.get('/air', function( req, res ){
 
 })
 
-app.post('/air', function( req, res){
-  res.on('data', function( data ){
+
+
+// 打开空调
+app.post('/air/on', function( req, res){
+  req.on('data', function( data ){
+    
+    
     let obj = JSON.parse( data );
     console.log( obj );
+
+
+    // request.post("")
+
+    //808600016928
+    setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 0 );
+
+    res.send("数据已成功接收！");
+  })
+
+})
+
+// 关闭空调
+app.post('/air/off', function( req, res){
+  req.on('data', function( data ){
+    
+    let obj = JSON.parse( data );
+    console.log( obj );
+
+    //808600016928
+    setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
 
     res.send("数据已成功接收！");
   })
