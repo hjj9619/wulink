@@ -14,10 +14,11 @@ let getLocalToken = require('../util/getAccessToken').getLocalToken;
 //pwd PWD
 
 function connecteWifi ( devType, id, cmdType, cmd, ssid, pwd ){
-  getLocalToken().then(function(data){
+  return new Promise(function( resolve, reject ){
+    getLocalToken().then(function(data){
       // console.log( data );
     
-      return new Promise(function( resolve, reject ){
+      
         let now = new Date().getTime();
         let nonce = "ASaSJLLJIOqeoiaq"
         let SIGN = md5(conf.appId + data + nonce + now);
