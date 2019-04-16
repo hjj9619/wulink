@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Air_Ctrl</title>
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+  </head>
+  <body>
+
+    <button id="on"> 打开空调 </button>
+    <button id="off"> 关闭空调 </button>
+    <button id="wifi"> 配置 WiFi </button>
+    <h1>WIFI 连接成功</h1>
+
+    <input type="text" id="ssid">
+    <input type="text" id="pwd">
+  </body>
+
+  <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+  <script>
+
+    $("#on").click(function(){
+      $.post("/air/on", JSON.stringify({data: "打开空调"}), function(data,status){
+        console.log( data );
+        console.log( status );
+      });
+    });
+
+    $("#off").click(function(){
+      $.post("/air/off", JSON.stringify({data: "关闭空调"}), function(data,status){
+        console.log( data );
+        console.log( status );
+      });
+    });
+
+    let conf = {
+      "SSID": "", 
+      "PWD": ""
+    }
+    $('#ssid').change(function(){
+      conf.SSID = $('#ssid').val();
+    })
+    $('#pwd').change(function(){
+      conf.PWD = $('#pwd').val();
+    })
+    $("#wifi").click(function(){
+      $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
+        console.log( data );
+        console.log( status );
+      });
+    });
+
+  </script>
+</html>

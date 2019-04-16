@@ -99,16 +99,36 @@ app.get('/air/wifi', function( req, res ){
         console.log( obj );
   
         //808600016928
-        connecteWifi( "Wukong", id, "set", "ssid", obj.SSID, obj.PWD ).then(function( data ){
-          console.log( data );
-        }, function( err ){
-          if( err ) console.log( err );
-        });
+
+        return new Promise(function( resolve, reject ){
+
+
+          connecteWifi( "Wukong", id, "set", "ssid", obj.SSID, obj.PWD ).then(function( data ){
+            console.log( data );
+          }, function( err ){
+            if( err ) console.log( err );
+          }).then(function( data ){
+            if( data.errcode == 0 ){
+              resolve( 0 );
+            }
+          },function( err ){
+            if( err ) reject( err );
+          });
+
+        })
+        
   
-        res.send("数据已成功接收！");
   
       })
   
     })
   })
+}).then(function( data ){
+
+  if( data == 0 ){
+    res.render('main')
+  }
+
+}).catch(function( err ){
+  if( err ) console.log( err );
 })
