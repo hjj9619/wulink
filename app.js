@@ -93,7 +93,7 @@ app.post('/air/wifi', function( req, res){
     console.log( obj );
 
     //808600016928
-    // connecteWifi( "Wukong", "808600016928", "set", "ssid", "XCKJ", "XCKJ8888" );
+    connecteWifi( "Wukong", "808600016928", "set", "ssid", obj.SSID, obj.PWD );
 
     res.send("数据已成功接收！");
 
