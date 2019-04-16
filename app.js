@@ -4,7 +4,7 @@ let ejs = require('ejs');
 
 
 app.set( 'view engine', ejs );
-app.set('views', './views')
+app.set('views', path.join(__dirname, 'views'));
 
 
 let getAccessToken = require('./util/getAccessToken').getAccessToken;
