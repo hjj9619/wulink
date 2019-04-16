@@ -84,5 +84,22 @@ app.post('/air/off', function( req, res){
 
 })
 
+// 给悟空连 WIFI
+app.post('/air/wifi', function( req, res){
+  req.on('data', function( data ){
+    
+    let obj = JSON.parse( data );
+    console.log( obj );
+
+    //808600016928
+    // setDeviceInfo( "Wukong", "808600016928", "set", "ssid", "XCKJ", "XCKJ8888" );
+
+    res.send("数据已成功接收！");
+
+  })
+
+})
+
+
 
 // setDeviceInfo();

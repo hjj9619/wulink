@@ -7,6 +7,7 @@
   <body>
     <button id="on"> 打开空调 </button>
     <button id="off"> 关闭空调 </button>
+    <button id="wifi"> 配置 WiFi </button>
     <ul>
       <li> Temp - <%= temp %>  </li>
       <li> Mode - <%= mode %>  </li>
@@ -30,6 +31,13 @@
 
     $("#off").click(function(){
       $.post("/air/off", JSON.stringify({data: "关闭空调"}), function(data,status){
+        console.log( data );
+        console.log( status );
+      });
+    });
+
+    $("#wifi").click(function(){
+      $.post("/air/wifi", JSON.stringify({"SSID": "XCKJ", "PWD": "XCKJ8888"}), function(data,status){
         console.log( data );
         console.log( status );
       });
