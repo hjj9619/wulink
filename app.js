@@ -23,7 +23,7 @@ app.get('/air', function( req, res, next ){
   getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
     console.log( body );
 
-    res.render('index', body);
+    res.render( 'index', body.data );
   });
 
 })

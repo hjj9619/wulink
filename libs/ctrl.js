@@ -71,7 +71,7 @@ function getDeviceInfo ( devType, id, cmdType, cmd ){
             
             request.get(url, {json: true}, function( err, response, body ){
               if( !err ){
-                console.log( body );
+                // console.log( body );
                 resolve( body );
               }else{
                 // console.log( err );
