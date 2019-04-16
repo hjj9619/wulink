@@ -122,13 +122,13 @@ app.get('/air/wifi', function( req, res ){
       })
   
     })
+  }).then(function( data ){
+
+    if( data == 0 ){
+      res.render('main')
+    }
+  
+  }).catch(function( err ){
+    if( err ) console.log( err );
   })
-}).then(function( data ){
-
-  if( data == 0 ){
-    res.render('main')
-  }
-
-}).catch(function( err ){
-  if( err ) console.log( err );
 })
