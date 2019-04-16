@@ -41,7 +41,7 @@ app.get('/air', function( req, res ){
 })
 
 app.post('/air', function( req, res){
-  console.log( req.body );
+  console.log( req );
   res.status = 200;
   res.send("hello")
 })
