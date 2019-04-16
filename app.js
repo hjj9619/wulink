@@ -24,6 +24,10 @@ app.get('/air', function( req, res, next ){
     console.log( body );
 
     res.render( 'index', body.data );
+  }, function( err ){
+    if( err ) console.log( err );
+  }).catch(function( err ){
+    if( err ) console.log( err );
   });
 
 })
