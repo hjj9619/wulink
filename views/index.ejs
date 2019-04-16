@@ -22,7 +22,10 @@
     
 
     $("#on").click(function(){
-      $.post("/air", {"name": "test"}, function(data,status){
+      $.post("/air", {
+          name:"Donald Duck",
+          city:"Duckburg"
+        }, function(data,status){
         console.log( data );
         console.log( status );
       });
