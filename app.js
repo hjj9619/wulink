@@ -29,7 +29,7 @@ getLocalToken().then(function(data){
 
   let str = JSON.stringify( formData );
   let url = conf.deviceUrl + "808600016928";
-  request.get(url, { formData: str }, function( err, response, body ){
+  request.get(url, { formData: formData }, function( err, response, body ){
     if( !err ){
       console.log( response );
       console.log( body );
