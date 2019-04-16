@@ -16,21 +16,24 @@ app.listen(3000);
 getLocalToken().then(function(data){
   // console.log( data );
   let now = new Date().getTime();
-  let SIGN = md5(conf.appId + data + "asdfghjkllkjhgfdsa", now)
+  let SIGN = md5(conf.appId + data + "ASaSJLLJIOqeoiaq", now)
   let formData = {
-    appid: conf.appId,
-    nonce: "asdfghjkllkjhgfdsa",
-    timestamp: now,
-    sign: SIGN,
-    devtype: "Wukong",
-    cmdtype: "get",
-    cmd: "device_info"
-
+    "appid": conf.appId,
+    "nonce": "ASaSJLLJIOqeoiaq",
+    "timestamp": now,
+    "sign": SIGN,
+    "devtype": "Wukong",
+    "cmdtype": "get",
+    "cmd": "device_info"
   }
+
   let str = JSON.stringify( formData );
   let url = conf.deviceUrl + "808600016928";
   request.get(url, { formData: str }, function( err, response, body ){
-    console.log( body );
+    if( !err ){
+      console.log( response );
+      console.log( body );
+    }
   })
 
 
