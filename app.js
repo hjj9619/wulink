@@ -42,8 +42,6 @@ app.get('/air', function( req, res ){
   }).catch(function( err ){
     if( err ) console.log( err );
   });
-
-
 })
 
 
@@ -110,8 +108,11 @@ app.get('/air/wifi', function( req, res ){
     })
   }).then(function( data ){
 
-    
+
     console.log( data );
+    if( data.errcode === 0 ){
+      res.render('main');
+    }
 
 
   }).catch(function( err ){
