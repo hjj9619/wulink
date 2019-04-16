@@ -34,7 +34,7 @@ getLocalToken().then(function(data){
   let url2 = conf.deviceUrl + "808600016928";
   request.get(url, {json: true}, function( err, response, body ){
     if( !err ){
-      console.log( response );
+      // console.log( response );
       console.log( body );
     }else{
       console.log( err );
