@@ -4,6 +4,7 @@ let ejs = require('ejs');
 
 
 app.set( 'view engine', ejs );
+app.set('views', './views')
 
 
 let getAccessToken = require('./util/getAccessToken').getAccessToken;
@@ -18,17 +19,17 @@ app.listen(3000);
 
 // getAccessToken();
 
-app.get('/air', function( req, res, next ){
+app.get('/air', function( req, res ){
   
   getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
-    console.log( body );
-
+    // console.log( body );
     res.render( 'index', body.data );
-  }, function( err ){
-    if( err ) console.log( err );
+    
   }).catch(function( err ){
     if( err ) console.log( err );
   });
+
+  
 
 })
 
