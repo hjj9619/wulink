@@ -97,41 +97,23 @@ app.get('/air/wifi', function( req, res ){
         
         let obj = JSON.parse( data );
         console.log( obj );
+
   
         //808600016928
 
-        return new Promise(function( resolve, reject ){
-
-
           connecteWifi( "Wukong", id, "set", "ssid", obj.SSID, obj.PWD ).then(function( data ){
-            console.log( data );
-          }, function( err ){
-            if( err ) console.log( err );
-          }).then(function( data ){
-            if( data.errcode == 0 ){
-              resolve( 0 );
-            }
-          },function( err ){
-            if( err ) reject( err );
-          });
-
-        })
-        
-  
+            resolve( data );
+          })
   
       })
   
     })
   }).then(function( data ){
 
-    if( data == 0 ){
-      res.render('main')
-    }
-  
-  }, function( err ){
-    if( err ){
-      console.log( err );
-    }
+    
+    console.log( data );
+
+
   }).catch(function( err ){
     if( err ) console.log( err );
   })
