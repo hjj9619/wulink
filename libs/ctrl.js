@@ -13,7 +13,7 @@ let getLocalToken = require('../util/getAccessToken').getLocalToken;
 //ssid SSID
 //pwd PWD
 
-function setDeviceInfo ( devType, id, cmdType, cmd, ssid, pwd ){
+function connecteWifi ( devType, id, cmdType, cmd, ssid, pwd ){
   getLocalToken().then(function(data){
       // console.log( data );
     
@@ -165,5 +165,6 @@ function getDeviceInfo ( devType, id, cmdType, cmd ){
 
 exports = module.exports = {
     getDeviceInfo: getDeviceInfo,
-    setDeviceInfo: setDeviceInfo
+    setDeviceInfo: setDeviceInfo,
+    connecteWifi: connecteWifi
 }

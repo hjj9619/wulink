@@ -25,6 +25,7 @@ app.set( 'view engine', 'ejs' );
 let getAccessToken = require('./util/getAccessToken').getAccessToken;
 let getDeviceInfo = require('./libs/ctrl').getDeviceInfo;
 let setDeviceInfo = require('./libs/ctrl').setDeviceInfo;
+let connecteWifi = require('./libs/ctrl').connecteWifi;
 
 
 
@@ -92,7 +93,7 @@ app.post('/air/wifi', function( req, res){
     console.log( obj );
 
     //808600016928
-    // setDeviceInfo( "Wukong", "808600016928", "set", "ssid", "XCKJ", "XCKJ8888" );
+    // connecteWifi( "Wukong", "808600016928", "set", "ssid", "XCKJ", "XCKJ8888" );
 
     res.send("数据已成功接收！");
 
@@ -100,6 +101,3 @@ app.post('/air/wifi', function( req, res){
 
 })
 
-
-
-// setDeviceInfo();
