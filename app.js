@@ -3,6 +3,13 @@ let app = express();
 let ejs = require('ejs');
 let path = require("path");
 
+let bodyParser = require('body-parser');
+
+
+// 解析 application/json
+app.use(bodyParser.json()); 
+// 解析 XML
+app.use(bodyParser.text({ type: 'text/xml' }))
 
 app.set('views', path.join(__dirname, 'views'));
 app.set( 'view engine', 'ejs' );
@@ -34,6 +41,7 @@ app.get('/air', function( req, res ){
 })
 
 app.post('/air', function( req, res){
+  console.log( req.body );
   res.status = 200;
   res.send("hello")
 })
