@@ -12,5 +12,5 @@ app.listen(3000);
 // getAccessToken();
 
 
-getDeviceInfo('808600016928', 'get', 'air_ctrl');
+getDeviceInfo('Wuneng', '101080001561', 'get', 'online');
 

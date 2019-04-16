@@ -5,7 +5,7 @@ let getLocalToken = require('../util/getAccessToken').getLocalToken;
 
 
 
-function getDeviceInfo ( id, cmdtype, cmd ){
+function getDeviceInfo ( devType, id, cmdType, cmd ){
     getLocalToken().then(function(data){
         // console.log( data );
       
@@ -26,7 +26,7 @@ function getDeviceInfo ( id, cmdtype, cmd ){
         // let url2 = conf.deviceUrl + "808600016928";
         // let str = JSON.stringify( formData );
 
-        let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=Wukong&cmdtype=${ cmdtype }&cmd=${ cmd }` ;
+        let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
         
         request.get(url, {json: true}, function( err, response, body ){
           if( !err ){
