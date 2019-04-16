@@ -1,0 +1,23 @@
+{
+  "name": "wulink",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "pm2 start app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hjj9619/wulink.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hjj9619/wulink/issues"
+  },
+  "homepage": "https://github.com/hjj9619/wulink#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}

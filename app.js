@@ -11,7 +11,7 @@ let appId = "78f4dfd35418565e20c67997b96ed793";
 
 // 获取 Access_Token, 并将 Access_Token 字符串写入./access.txt 文件中
 let url = 'https://api.ifanscloud.com/v3/access/token';
-/*
+
 request.post(url, {formData: { "appid":appId, "appkey":appKey }, json: true}, function(err, response, body){
     if( err ){
         console.log( err );
@@ -23,5 +23,5 @@ request.post(url, {formData: { "appid":appId, "appkey":appKey }, json: true}, fu
       })
     }  
 })
-*/
+
 
