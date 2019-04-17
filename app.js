@@ -32,7 +32,7 @@ let conf = require("./conf/conf");
 
 
 
-app.listen(3000);
+app.listen(3001);
 
 
 getAccessToken();
@@ -194,18 +194,34 @@ app.post('/air/red', function( req, res){
       }
     })
   })
-
-    
-
-
-    
-
-
   res.send("匹配红外中……")
-
 })
 
 
+
+
+app.post('/air/temp/down', function( req, res ){
+
+  req.on('data', function( data ){
+
+    console.log( data );
+    
+    let setTemp = JSON.parse( data ).setTemp;
+    console.log( setTemp );
+
+
+    //808600016928
+    // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+    setDeviceInfo('808600016928', {
+      "temp": setTemp
+    }).then(function( data ){
+      res.send( data );
+    })
+
+
+  })
+
+})
 
 
 

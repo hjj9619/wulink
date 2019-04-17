@@ -62,27 +62,7 @@ function connecteWifi ( devType, id, cmdType, cmd, ssid, pwd ){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function setDeviceInfo ( devType, id, cmdType, cmd, onoff ){
+function setDeviceInfo ( id, obj  ){ //devType, id, cmdType, cmd, onoff
     return new Promise( function( resolve, reject ){
       getLocalToken().then(function(data){
         // console.log( data );
@@ -91,23 +71,26 @@ function setDeviceInfo ( devType, id, cmdType, cmd, onoff ){
         let nonce = "ASaSJLLJIOqeoiaq"
         let SIGN = md5(conf.appId + data + nonce + now);
 
+        
 
         let formData = {
-
           "appid": conf.appId,
           "nonce": nonce,
           "timestamp": now,
           "sign": SIGN,
-          "devtype": devType,
-          "cmdtype": cmdType,
-          "cmd": cmd,
-          "onoff": onoff,
-          "mode": 1,
-          "temp": 10,
+          "devtype": "Wukong",
+          "cmdtype": "set",
+          "cmd": "air_ctrl",
+          "onoff": 0,
+          "mode": 0,
+          "temp": 0,
           "wind": 0,
-          "direct": 1,
+          "direct": 0,
           "key": 2
+        }
 
+        for( let key in obj ){
+          formData[key] = obj[key];
         }
 
         let url2 = conf.deviceUrl + id;
