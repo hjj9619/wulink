@@ -176,9 +176,9 @@
 
     $('.ctrlOthers .modeBtn').click(function(){
       let currentTemp = parseInt( $('.temp span').text() ) - 16;
-      let currentMode = parseInt( $('.mode').data("mode") );  // 0 - 4 
-      let currentDirect = parseInt( $('.direct').data("direct") );
-      let currentWind = parseInt( $('.wind').data("wind") );
+      let currentMode = parseInt( $('.mode span').data("mode") );  // 0 - 4 
+      let currentDirect = parseInt( $('.direct span').data("direct") );
+      let currentWind = parseInt( $('.wind span').data("wind") );
 
       let setMode = currentMode;
       if( setMode < 4 ){
