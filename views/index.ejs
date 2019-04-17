@@ -8,6 +8,8 @@
 
     <div class="container">
 
+        
+
       <div class="main">
         <div class="temp">
           <!--【温度】 16-30, 0-14 -->
@@ -56,12 +58,23 @@
             <span>高风</span>
           <% } %>
         </div>
+        <div class="onoff">
+          <!-- 【开关】 0 开，1 关 -->
+            开关：
+            <% if( onoff == 0 ){ %>
+              <span class="green">打开状态</span>
+            <% }else if( onoff == 1 ){ %>
+              <span class="red">关闭状态</span>
+            <% } %>
+          </div>
       </div>
 
       <div class="onoff">
           <!-- 【开关】 0 开，1 关 -->
-          <button class="on">开</button>
-          <button class="off">关</button>
+          
+          <button class="on" id="on">开</button>
+          
+          <button class="off" id="off">关</button>
       </div>
 
       <div class="ctrl">

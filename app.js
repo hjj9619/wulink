@@ -52,9 +52,7 @@ app.get('/air', function( req, res ){
       online = onLineBody.data.online;
       body.data['online'] = online;
       console.log( body.data );
-      resolve(online);
       res.render('index', data);
-      
     }).catch(function( err ){
       if( err ) console.log( err );
     });
