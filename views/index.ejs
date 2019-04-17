@@ -2,27 +2,79 @@
 <html>
   <head>
     <title>Air_Ctrl</title>
-    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
 
-    <button id="on"> 打开空调 </button>
-    <button id="off"> 关闭空调 </button>
-    <!-- <button id="wifi"> 配置 WiFi </button> -->
-    
-    <ul>
-      
-      <li> Temp - <%= temp %>  </li>
-      <li> Mode - <%= mode %>  </li>
-      <li> Direct - <%= direct %>  </li>
-      <li> Wind - <%= wind %>  </li>
-      <li> Onoff - <%= onoff %>  </li>
-      <li> Online - <%= online %> </li>
+    <div class="container">
 
-    </ul>
+      <div class="main">
+        <div class="temp">
+          <!--【温度】 16-30, 0-14 -->
+          <%= temp + 16 %> ℃
+        </div>
+        <div class="mode">
+          <!--【模式】 0自动，1制冷，2除湿，3送风，4制热 -->
+          模式：
+          <% if( mode == 0 ){ %>
+            <span> 自动</span>
+          <% }else if( mode == 1 ){ %>
+            <span>制冷</span>
+          <% }else if( mode == 2 ){ %>
+            <span>除湿</span>
+          <% }else if( mode == 3 ){ %>
+            <span>送风</span>
+          <% }else if( mode == 4 ){ %>
+            <span>制热</span>
+          <% } %>
+        </div>
+        <div class="direct">
+          <!-- 【风向】0自动，1 风向1，2 风向2，3 风向3，4 风向4 -->
+          风向：
+          <% if( direct == 0 ){ %>
+            <span>自动</span>
+          <% }else if( direct == 1 ){ %>
+            <span>风向1</span>
+          <% }else if( direct == 2 ){ %>
+            <span>风向2</span>
+          <% }else if( direct == 3 ){ %>
+            <span>风向3</span>
+          <% }else if( direct == 4 ){ %>
+            <span>风向4</span>
+          <% } %>
+        </div>
+        <div class="wind">
+          <!-- 【风速】0自动，1 低风， 2 中风， 3 高风 -->
+          风速：
+          <% if( wind == 0 ){ %>
+            <span>自动</span>
+          <% }else if( wind == 1 ){ %>
+            <span>低风</span>
+          <% }else if( wind == 2 ){ %>
+            <span>中风</span>
+          <% }else if( wind == 3 ){ %>
+            <span>高风</span>
+          <% } %>
+        </div>
+      </div>
 
-    <input type="text" id="ssid">
-    <input type="text" id="pwd">
+      <div class="onoff">
+          <!-- 【开关】 0 开，1 关 -->
+          <button class="on">开</button>
+          <button class="off">关</button>
+      </div>
+
+      <div class="ctrl">
+        <div class="ctrlTemp">
+          <button class="up"> + </button>
+          <button class="down"> - </button>
+        </div>
+      </div>
+
+    </div>
+
+
+
   </body>
 
   <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
@@ -34,30 +86,11 @@
         console.log( status );
       });
     });
-
     $("#off").click(function(){
       $.post("/air/off", JSON.stringify({data: "关闭空调"}), function(data,status){
         console.log( data );
         console.log( status );
       });
     });
-
-    // let conf = {
-    //   "SSID": "", 
-    //   "PWD": ""
-    // }
-    // $('#ssid').change(function(){
-    //   conf.SSID = $('#ssid').val();
-    // })
-    // $('#pwd').change(function(){
-    //   conf.PWD = $('#pwd').val();
-    // })
-    // $("#wifi").click(function(){
-    //   $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
-    //     console.log( data );
-    //     console.log( status );
-    //   });
-    // });
-
   </script>
 </html>

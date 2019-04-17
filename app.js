@@ -8,6 +8,7 @@ let request = require('request');
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: 'application/*+json' }))
+app.use(express.static('public'))
  
 // parse some custom thing into a Buffer
 app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
@@ -41,7 +42,7 @@ getAccessToken();
 // 空调首页
 app.get('/air', function( req, res ){
   
-    
+    res.render('index');
 
   getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
     getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( onLineBody ){
@@ -57,7 +58,6 @@ app.get('/air', function( req, res ){
      body.data['online'] = online;
      console.log( body.data );
      res.render('index', body.data );
-
    })
   }).catch(function( err ){
     if( err ) console.log( err );
@@ -190,7 +190,7 @@ app.post('/air/red', function( req, res){
       console.log( body );
       if( body.data.match_action == 1 ){
         console.log( "红外匹配成功!" );
-        // res.redirect('/air');
+        res.redirect('/air');
       }else{
         console.log(" 红外匹配失败！ ");
         console.log( body );

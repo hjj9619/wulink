@@ -1,0 +1,71 @@
+body{
+    width: 340px;
+    height: 620px;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+.main{
+    width: 240px;
+    height: 240px;
+    border: 1px solid green;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+.main .temp{
+    width: 100%;
+    height: 45%;
+    border: 1px solid yellow;
+    color: red;
+    font-size: 4em;
+    text-align: center;
+    line-height: 100px;
+    margin-top: 20px;
+}
+.main .mode{
+    /* 模式 */
+    text-align: center;
+    color: greenyellow;
+}
+.main .direct{
+    /* 风向 */
+    text-align: center;
+    color: blue;
+}
+.main .wind{
+    /* 风速 */
+    text-align: center;
+    color: rgb(212, 0, 255);
+}
+
+.onoff{
+    height: 50px;
+    border: 1px solid yellowgreen;
+
+}
+.onoff .on, .onoff .off{
+    width: 50%;
+    height: 100%;
+    color: 20px;
+    display: block;
+    float: left;
+}
+.ctrl{
+    height: 200px;
+    border: 1px red solid;
+}
+.ctrl .ctrlTemp{
+    width: 60px;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px yellow solid;
+}
+.ctrl .ctrlTemp button{
+    display: block;
+    margin: 0 auto;
+    height: 50%;
+    width: 100%;
+    font-size: 4em;
+}
