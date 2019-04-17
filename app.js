@@ -21,6 +21,7 @@ app.set( 'view engine', 'ejs' );
 
 
 let getAccessToken = require('./util/getAccessToken').getAccessToken;
+let getLocalToken = require('./util/getAccessToken').getLocalToken;
 let getDeviceInfo = require('./libs/ctrl').getDeviceInfo;
 let setDeviceInfo = require('./libs/ctrl').setDeviceInfo;
 let connecteWifi = require('./libs/ctrl').connecteWifi;
@@ -121,7 +122,7 @@ app.get('/air/wifi', function( req, res ){
       res.end("success");
 
       // 如果 WIIF 连接成功，就跳转回主页
-      res.redirect('/air');
+      // res.redirect('/air');
 
     }
 
@@ -185,6 +186,17 @@ app.post('/air/red', function( req, res){
       })
     
     
+    }).then(function( ){
+      getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
+        console.log( body );
+        if( body.data.match_action == 1 ){
+          console.log( "红外匹配成功!" );
+          res.redirect('/air');
+        }else{
+          console.log(" 红外匹配失败！ ");
+          console.log( body );
+        }
+      })
     })
 
     
@@ -198,7 +210,5 @@ app.post('/air/red', function( req, res){
 
 })
 
-getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
-  console.log( body );
-  res.redirect('/air');
-})
+
+
