@@ -25,6 +25,7 @@ let getLocalToken = require('./util/getAccessToken').getLocalToken;
 let getDeviceInfo = require('./libs/ctrl').getDeviceInfo;
 let setDeviceInfo = require('./libs/ctrl').setDeviceInfo;
 let connecteWifi = require('./libs/ctrl').connecteWifi;
+let conf = require("./conf/conf");
 
 
 
@@ -46,7 +47,7 @@ app.get('/air', function( req, res ){
       online = data;
     })
     console.log( online );
-    body.data.onlin = 0;
+    body.data.online = 0;
     res.render( 'index', body.data );
     
   }).catch(function( err ){
