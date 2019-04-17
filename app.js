@@ -44,17 +44,21 @@ app.get('/air', function( req, res ){
     
 
   getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
-    let online;
     getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( onLineBody ){
-      online = onLineBody.data.online;
-      console.log( onLineBody.data.online );
-    })
-    console.log( body.data );
+      
+      console.log(typeof onLineBody ); // Object  
+      console.log( onLineBody.data.online ); // 1
+      return new Promise(function(resolve, reject ){
+      
+        online = onLineBody.data.online;
+        resolve(online);
+      }) 
+   }).then(function(){
+     body.data['online'] = online;
+     console.log( body.data );
+     res.render('index', body.data );
 
-    // body.data["online"] = online;
-    
-    res.render( 'index', body.data );
-    
+   })
   }).catch(function( err ){
     if( err ) console.log( err );
   });
