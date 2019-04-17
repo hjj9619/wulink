@@ -105,13 +105,13 @@ app.get('/air/wifi', function( req, res ){
         //808600016928
 
           connecteWifi( "Wukong", id, "set", "ssid", obj.SSID, obj.PWD ).then(function( data ){
-            resolve( data );
+            resolve( data, res );
           })
   
       })
   
     })
-  }).then(function( data ){
+  }).then(function( data, res ){
 
 
     console.log( data );
