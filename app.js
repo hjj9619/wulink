@@ -34,7 +34,7 @@ let conf = require("./conf/conf");
 app.listen(3001);
 
 
-// getAccessToken();
+getAccessToken();
 
 
 
