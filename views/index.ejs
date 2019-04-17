@@ -129,15 +129,30 @@
 
     //调整温度 降温
     $('.ctrlTemp .down').click(function(){
-      let currentTemp = parseInt( $('.temp span').text() ) - 16;
-      console.assert( "currentTemp_____" + currentTemp );
-      let setTemp = currentTemp - 1;
+      
       if( currentTemp == 0 ){
-        alert( '不能再降温了!' );
+        alert( '不能再降温了!' );  // 16摄氏度
       }else{
 
+        let currentTemp = parseInt( $('.temp span').text() ) - 16;
+        let currentMode = parseInt( $('.mode span').data("mode") );  // 0 - 4 
+        let currentDirect = parseInt( $('.direct span').data("direct") );
+        let currentWind = parseInt( $('.wind span').data("wind") );
+        let setTemp = currentTemp - 1;
+
+        
+      
+        
+        let obj = {
+          "mode": currentMode,
+          "temp": setTemp,
+          "direct": currentDirect,
+          "wind": currentWind
+        };
+
+
         // 降温 1 摄氏度
-        $.post('/air/temp/down', JSON.stringify( { "setTemp": setTemp } ), function( data ){
+        $.post('/air/temp/down', JSON.stringify( obj ), function( data ){
           console.log( data.errcode );
           if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
             console.log( data );
@@ -152,15 +167,27 @@
     })
     // 升温
     $('.ctrlTemp .up').click(function(){
-      let currentTemp = parseInt( $('.temp span').text() ) - 16;
-      console.assert( "currentTemp_____" + currentTemp );
-      let setTemp = currentTemp + 1;
+      
       if( currentTemp == 14 ){
-        alert( '不能再升温了!' );
+        alert( '不能再升温了!' ); // 30摄氏度
       }else{
+        let currentTemp = parseInt( $('.temp span').text() ) - 16;
+        let currentMode = parseInt( $('.mode span').data("mode") );  // 0 - 4 
+        let currentDirect = parseInt( $('.direct span').data("direct") );
+        let currentWind = parseInt( $('.wind span').data("wind") );
+        let setTemp = currentTemp + 1;
+        
+      
+        
+        let obj = {
+          "mode": currentMode,
+          "temp": setTemp,
+          "direct": currentDirect,
+          "wind": currentWind
+        };
 
         // 升温 1 摄氏度
-        $.post('/air/temp/up', JSON.stringify( { "setTemp": setTemp } ), function( data ){
+        $.post('/air/temp/up', JSON.stringify( obj ), function( data ){
           console.log(data.errcode)
           if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
             
