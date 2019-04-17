@@ -259,13 +259,13 @@ $('.ctrlOthers .windBtn').click(function(){
             windName = "自动";
             break;
         case 1:
-            windName = "风速1";
+            windName = "低风";
             break;
         case 2:
-            windName = "风速2";
+            windName = "中风";
             break;
         case 3:
-            windName = "风速3";
+            windName = "高风";
             break;
         
         }
