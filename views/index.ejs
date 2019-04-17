@@ -23,43 +23,43 @@
           <!--【模式】 0自动，1制冷，2除湿，3送风，4制热 -->
           模式：
           <% if( mode == 0 ){ %>
-            <span> 自动</span>
+            <span data-mode=0>自动</span>
           <% }else if( mode == 1 ){ %>
-            <span>制冷</span>
+            <span data-mode=1>制冷</span>
           <% }else if( mode == 2 ){ %>
-            <span>除湿</span>
+            <span data-mode=2>除湿</span>
           <% }else if( mode == 3 ){ %>
-            <span>送风</span>
+            <span data-mode=3>送风</span>
           <% }else if( mode == 4 ){ %>
-            <span>制热</span>
+            <span data-mode=4>制热</span>
           <% } %>
         </div>
         <div class="direct">
           <!-- 【风向】0自动，1 风向1，2 风向2，3 风向3，4 风向4 -->
           风向：
           <% if( direct == 0 ){ %>
-            <span>自动</span>
+            <span data-direct=0>自动</span>
           <% }else if( direct == 1 ){ %>
-            <span>风向1</span>
+            <span data-direct=1>风向1</span>
           <% }else if( direct == 2 ){ %>
-            <span>风向2</span>
+            <span data-direct=2>风向2</span>
           <% }else if( direct == 3 ){ %>
-            <span>风向3</span>
+            <span data-direct=3>风向3</span>
           <% }else if( direct == 4 ){ %>
-            <span>风向4</span>
+            <span data-direct=4>风向4</span>
           <% } %>
         </div>
         <div class="wind">
           <!-- 【风速】0自动，1 低风， 2 中风， 3 高风 -->
           风速：
           <% if( wind == 0 ){ %>
-            <span>自动</span>
+            <span data-wind=0>自动</span>
           <% }else if( wind == 1 ){ %>
-            <span>低风</span>
+            <span data-wind=1>低风</span>
           <% }else if( wind == 2 ){ %>
-            <span>中风</span>
+            <span data-wind=2>中风</span>
           <% }else if( wind == 3 ){ %>
-            <span>高风</span>
+            <span data-wind=3>高风</span>
           <% } %>
         </div>
         <div class="onoff">
@@ -127,7 +127,7 @@
       
     });
 
-    //调整温度
+    //调整温度 降温
     $('.ctrlTemp .down').click(function(){
       let currentTemp = parseInt( $('.temp span').text() ) - 16;
       console.assert( "currentTemp_____" + currentTemp );
@@ -173,5 +173,65 @@
         })
       }
     })
+
+    $('.ctrlOthers .modeBtn').click(function(){
+      let currentTemp = parseInt( $('.temp span').text() ) - 16;
+      let currentMode = parseInt( $('.mode').data("mode") );  // 0 - 4 
+      let currentDirect = parseInt( $('.direct').data("direct") );
+      let currentWind = parseInt( $('.wind').data("wind") );
+
+      let setMode = currentMode;
+      if( setMode < 4 ){
+        setMode++;
+      }else{
+        setMode = 0;
+      }
+      
+      
+      let obj = {
+        "mode": setMode,
+        "temp": currentTemp,
+        "direct": currentDirect,
+        "wind": currentWind
+      };
+
+        // 升温 1 摄氏度
+      $.post('/air/mode', JSON.stringify( obj ), function( data ){
+        console.log(data.errCode)
+        if( data.errCode == 1 ){ // errorcode = 1,代表设备处于关机状态
+          
+          console.log( data );
+
+        }else{
+          console.log( data );
+          let modeName;
+
+          switch( parseInt( setMode ) ){
+            case 0: 
+              modeName = "自动";
+              break;
+            case 1:
+              modeName = "制冷";
+              break;
+            case 2:
+              modeName = "除湿";
+              break;
+            case 3:
+              modeName = "送风";
+              break;
+            case 4:
+              modeName = "制热";
+              break;
+          }
+
+
+          $('.mode span').text( modeName );
+        }
+
+      })
+
+
+    })
+
   </script>
 </html>

@@ -208,6 +208,32 @@ app.post('/air/temp/up', function( req, res ){
 })
 
 
+// 切换空调工作模式  0自动 1制冷 2除湿 3送风 4制热 
+app.post('/air/mode', function( req, res ){
+
+  getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
+    console.log( data );
+    if( data.onoff == 0 ){
+
+      req.on('data', function( data ){
+        let obj = JSON.parse( data );
+        console.log(  obj );
+    
+        //808600016928
+        // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+        setDeviceInfo('808600016928', obj ).then(function( data ){
+          res.send( data );
+        })
+      })
+    }else{
+      res.send({'errCode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
+    }
+  })
+
+
+
+})
+
 
 
 //////////////////////////////////////////////////////////////////////

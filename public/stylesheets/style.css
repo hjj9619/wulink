@@ -71,9 +71,15 @@ body{
     display: block;
     float: left;
 }
+
+
+
 .ctrl{
     height: 200px;
     border: 1px red solid;
+}
+.ctrl .ctrlOthers, .ctrl .ctrlTemp{
+    float: left;
 }
 .ctrl .ctrlTemp, .ctrl .ctrlOthers{
     width: 33.33%;
