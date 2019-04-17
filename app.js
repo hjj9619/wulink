@@ -153,7 +153,6 @@ app.post('/air/red', function( req, res){
       let nonce = "ASaSJLLJIOqeoiaq"
       let SIGN = md5(conf.appId + data + nonce + now);
 
-
       let formData = {
         "appid": conf.appId,
         "nonce": nonce,
@@ -188,18 +187,18 @@ app.post('/air/red', function( req, res){
     
     })
 
-
-    getLocalToken.then(function(){
-      getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
-        console.log( body );
-      })
-    }).then(function(){
-      res.redirect('/air');
-    })
+    
 
 
     
 
   })
 
+  res.send("匹配红外中……")
+
+})
+
+getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
+  console.log( body );
+  res.redirect('/air');
 })
