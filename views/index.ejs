@@ -8,7 +8,13 @@
 
     <div class="container">
 
-        
+      <div class="airStatus">
+        <% if( online == 1 ){ %>
+          在线：<span class="green greenBg">设备在线</span>
+        <% }else if( online == 0 ){ %>
+          离线：<span class="red redBg">设备离线</span>
+        <% } %>
+      </div>
 
       <div class="main">
         <div class="temp">
@@ -66,7 +72,7 @@
             <% }else if( onoff == 1 ){ %>
               <span class="red">关闭状态</span>
             <% } %>
-          </div>
+        </div>
       </div>
 
       <div class="onoffBtn">
@@ -104,7 +110,6 @@
           console.log( data );
         }
       });
-
     });
     $("#off").click(function(){
       let currentTemp = parseInt( $('.temp span').text() ) - 16;
