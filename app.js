@@ -44,6 +44,7 @@ app.get('/air', function( req, res ){
     getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( data ){
       online = data;
     })
+    console.log( online );
     body.data.onlin = 0;
     res.render( 'index', body.data );
     
@@ -115,6 +116,7 @@ app.get('/air/wifi', function( req, res ){
 
     console.log( data );
     if( data.errcode === 0 ){
+
       console.log( "WIFI连接成功！" );
       res.end("success");
 
@@ -140,11 +142,63 @@ app.post('/air/red', function( req, res){
     // console.log( obj );
 
     //808600016928
-    setDeviceInfo( "Wukong", "808600016928", "set", "match_process", 0 ).then(function( data ){
-      console.log( data );
-    });
+    // setDeviceInfo( "Wukong", "808600016928", "set", "match_process", 0 ).then(function( data ){
+    //   console.log( data );
+    // });
 
-    res.send("数据已成功接收！");
+    getLocalToken().then(function(data){
+      // console.log( data );
+    
+      let now = new Date().getTime();
+      let nonce = "ASaSJLLJIOqeoiaq"
+      let SIGN = md5(conf.appId + data + nonce + now);
+
+
+      let formData = {
+        "appid": conf.appId,
+        "nonce": nonce,
+        "timestamp": now,
+        "sign": SIGN,
+        "devtype": "Wukong",
+        "cmdtype": "set",
+        "cmd": "match_process",
+        "onoff": "0",
+        "mode": 1,
+        "temp": 10,
+        "wind": 0,
+        "direct": 1,
+        "key": 2
+      }
+
+      let url2 = conf.deviceUrl + id;
+      let str = JSON.stringify( formData );
+
+      // let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
+      
+      request.post(url2, {formData: formData, json: true}, function( err, response, body ){
+        if( !err ){
+          // console.log( response );
+          console.log("设置红外的返回结果")
+          console.log( body );
+        }else{
+          console.log( err );
+        }
+      })
+    
+    
+    })
+
+
+    getLocalToken.then(function(){
+      getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
+        console.log( body );
+      })
+    }).then(function(){
+      res.redirect('/air');
+    })
+
+
+    
 
   })
 
