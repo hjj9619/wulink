@@ -98,12 +98,15 @@
         console.log( data );
         console.log( status );
       });
+      $('.onoff span').text("打开状态").addClass('green');
+
     });
     $("#off").click(function(){
       $.post("/air/off", JSON.stringify({data: "关闭空调"}), function(data,status){
         console.log( data );
         console.log( status );
       });
+      $('.onoff span').text("关闭状态").addClass('red');
     });
   </script>
 </html>
