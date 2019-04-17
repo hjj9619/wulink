@@ -139,20 +139,20 @@ app.get('/air/wifi', function( req, res ){
 })
 
 
-// 判断空调是否为开机状态，否则不进行调温操作
-getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
-  console.log( data );
-  if( data.data == 1 ){
+// // 判断空调是否为开机状态，否则不进行调温操作
+// getDeviceInfo("Wukong", "808600016928", "get", "onoff").then(function( data ){
+//   console.log( data );
+//   if( data.data == 1 ){
 
-  }
-})
+//   }
+// })
 
 
 ///  降温
 app.post('/air/temp/down', function( req, res ){
-  getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
+  getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( data );
-    if( data.data == 0 ){
+    if( data.onoff == 0 ){
       req.on('data', function( data ){
 
         console.log( JSON.parse( data ) );
@@ -183,9 +183,9 @@ app.post('/air/temp/down', function( req, res ){
 
 /// 升温
 app.post('/air/temp/up', function( req, res ){
-  getDeviceInfo("Wukong", "808600016928", "get", "onoff").then(function( data ){
+  getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( data );
-    if( data.data == 0 ){
+    if( data.onoff == 0 ){
       req.on('data', function( data ){
 
         console.log( JSON.parse( data ) );
