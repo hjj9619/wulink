@@ -226,6 +226,51 @@ app.post('/air/mode', function( req, res ){
 
 })
 
+app.post('/air/direct', function(){
+  getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
+    console.log( "客户端提交的数据________" );
+    console.log( data );
+    if( data.data.onoff == 0 ){
+
+      req.on('data', function( data ){
+        let obj = JSON.parse( data );
+        console.log(  obj );
+    
+        //808600016928
+        // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+        setDeviceInfo('808600016928', obj ).then(function( data ){
+          res.send( data );
+        })
+      })
+    }else{
+      res.send({'errcode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
+    }
+  })
+})
+
+
+
+app.post('/air/wind', function(){
+  getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
+    console.log( "客户端提交的数据________" );
+    console.log( data );
+    if( data.data.onoff == 0 ){
+
+      req.on('data', function( data ){
+        let obj = JSON.parse( data );
+        console.log(  obj );
+    
+        //808600016928
+        // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+        setDeviceInfo('808600016928', obj ).then(function( data ){
+          res.send( data );
+        })
+      })
+    }else{
+      res.send({'errcode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
+    }
+  })
+})
 
 
 //////////////////////////////////////////////////////////////////////
