@@ -75,10 +75,9 @@ body{
     height: 200px;
     border: 1px red solid;
 }
-.ctrl .ctrlTemp{
-    width: 60px;
+.ctrl .ctrlTemp, .ctrl .ctrlOthers{
+    width: 33.33%;
     height: 100%;
-    margin: 0 auto;
     border: 1px yellow solid;
 }
 .ctrl .ctrlTemp button{
@@ -88,6 +87,15 @@ body{
     width: 100%;
     font-size: 4em;
 }
+.ctrl .ctrlOthers button{
+    display: block;
+    margin: 0 auto;
+    height: 33.333333%;
+    width: 100%;
+    font-size: 3em;
+}
+
+
 
 .airStatus{
     height: 30px;
@@ -102,3 +110,4 @@ body{
     height: 15px;
     margin-top: 7px;
 }
+
