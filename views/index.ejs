@@ -130,11 +130,11 @@
     //调整温度 降温
     $('.ctrlTemp .down').click(function(){
       
+      let currentTemp = parseInt( $('.temp span').text() ) - 16;
       if( currentTemp == 0 ){
         alert( '不能再降温了!' );  // 16摄氏度
       }else{
 
-        let currentTemp = parseInt( $('.temp span').text() ) - 16;
         let currentMode = parseInt( $('.mode span').data("mode") );  // 0 - 4 
         let currentDirect = parseInt( $('.direct span').data("direct") );
         let currentWind = parseInt( $('.wind span').data("wind") );
@@ -167,11 +167,11 @@
     })
     // 升温
     $('.ctrlTemp .up').click(function(){
-      
+      let currentTemp = parseInt( $('.temp span').text() ) - 16;
       if( currentTemp == 14 ){
         alert( '不能再升温了!' ); // 30摄氏度
       }else{
-        let currentTemp = parseInt( $('.temp span').text() ) - 16;
+        
         let currentMode = parseInt( $('.mode span').data("mode") );  // 0 - 4 
         let currentDirect = parseInt( $('.direct span').data("direct") );
         let currentWind = parseInt( $('.wind span').data("wind") );
