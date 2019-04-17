@@ -133,6 +133,7 @@
 
         // 降温 1 摄氏度
         $.post('/air/temp/down', JSON.stringify( { "setTemp": setTemp } ), function( data ){
+          data = JSON.parse( data );
           if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
             console.log( data );
           }else{
@@ -155,6 +156,7 @@
 
         // 升温 1 摄氏度
         $.post('/air/temp/up', JSON.stringify( { "setTemp": setTemp } ), function( data ){
+          data = JSON.parse( data );
           if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
             
             console.log( data );
