@@ -142,56 +142,69 @@ app.get('/air/wifi', function( req, res ){
 // 判断空调是否为开机状态，否则不进行调温操作
 getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
   console.log( data );
+  if( data.data == 1 ){
+
+  }
 })
 
 
 ///  降温
 app.post('/air/temp/down', function( req, res ){
+  getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
+    console.log( data );
+    if( data.data == 1 ){
+      req.on('data', function( data ){
 
-  req.on('data', function( data ){
-
-    console.log( JSON.parse( data ) );
+        console.log( JSON.parse( data ) );
+        
+        let setTemp = JSON.parse( data ).setTemp;
+        console.log( setTemp );
     
-    let setTemp = JSON.parse( data ).setTemp;
-    console.log( setTemp );
-
-
-    //808600016928
-    // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
-    setDeviceInfo('808600016928', {
-      "temp": setTemp
-    }).then(function( data ){
-      res.send( data );
-    })
-
-
+    
+        //808600016928
+        // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+        setDeviceInfo('808600016928', {
+          "temp": setTemp
+        }).then(function( data ){
+          res.send( data );
+        })
+    
+    
+      })
+    }else{
+      res.send({'errCode':1, 'errMsg': '设备离线状态，无法进行此操作！'})
+    }
   })
+
+  
 
 })
 
 
 /// 升温
 app.post('/air/temp/up', function( req, res ){
+  getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
+    console.log( data );
+    if( data.data == 1 ){
+      req.on('data', function( data ){
 
-  req.on('data', function( data ){
-
-    console.log( JSON.parse( data ) );
+        console.log( JSON.parse( data ) );
+        
+        let setTemp = JSON.parse( data ).setTemp;
+        console.log( setTemp );
     
-    let setTemp = JSON.parse( data ).setTemp;
-    console.log( setTemp );
-
-
-    //808600016928
-    // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
-    setDeviceInfo('808600016928', {
-      "temp": setTemp
-    }).then(function( data ){
-      res.send( data );
-    })
-
-
+        //808600016928
+        // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+        setDeviceInfo('808600016928', {
+          "temp": setTemp
+        }).then(function( data ){
+          res.send( data );
+        })
+      })
+    }else{
+      res.send({'errCode':1, 'errMsg': '设备离线状态，无法进行此操作！'})
+    }
   })
-
 })
 
 

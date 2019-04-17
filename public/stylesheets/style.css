@@ -95,6 +95,9 @@ body{
     line-height: 30px;
 }
 .airStatus span{
-    text-indent: -1000em;
+    text-indent: -1000000px;
     border-radius: 50%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
 }
