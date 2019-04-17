@@ -115,7 +115,7 @@
 
       $.post("/air/off", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function(data,status){
         console.log( data );
-        if( !data.errcode ){ // errorcode = 0,代表请求成功
+        if( !data.errcode ){ // errorcode = 0, 代表请求成功
           $('.onoff span').text("关闭状态").removeClass('green').addClass('red');
         }
       });
@@ -133,12 +133,11 @@
 
         // 降温 1 摄氏度
         $.post('/air/temp/down', JSON.stringify( { "setTemp": setTemp } ), function( data ){
-          if( !data.errcode ){
+          if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
             console.log( data );
-            ///// 需要判断是否成功
-            $('.temp span').text( setTemp + 16 );
           }else{
             console.log( data );
+            $('.temp span').text( setTemp + 16 );
           }
         })
       }
@@ -156,12 +155,13 @@
 
         // 升温 1 摄氏度
         $.post('/air/temp/up', JSON.stringify( { "setTemp": setTemp } ), function( data ){
-          if( !data.errcode ){
+          if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
+            
             console.log( data );
-            ///// 需要判断是否成功
-            $('.temp span').text( setTemp + 16 );
+
           }else{
             console.log( data );
+            $('.temp span').text( setTemp + 16 );
           }
         })
       }
