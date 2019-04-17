@@ -32,7 +32,7 @@ let conf = require("./conf/conf");
 
 
 
-app.listen(3001);
+app.listen(3000);
 
 
 getAccessToken();
@@ -48,15 +48,11 @@ app.get('/air', function( req, res ){
       
       console.log(typeof onLineBody ); // Object  
       console.log( onLineBody.data.online ); // 1
-      return new Promise(function(resolve, reject ){
       
-        online = onLineBody.data.online;
-        body.data['online'] = online;
-        console.log( body.data );
-        resolve(online);
-      }) 
-    }).then(function(data){
-      
+      online = onLineBody.data.online;
+      body.data['online'] = online;
+      console.log( body.data );
+      resolve(online);
       res.render('index', data);
       
     }).catch(function( err ){
