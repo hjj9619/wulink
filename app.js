@@ -50,7 +50,7 @@ app.get('/air', function( req, res ){
       console.log( onLineBody.data.online );
     })
     console.log( body.data );
-    
+
     // body.data["online"] = online;
     
     res.render( 'index', body.data );
@@ -110,8 +110,8 @@ app.get('/air/wifi', function( req, res ){
 
   
         //808600016928
-
-          connecteWifi( "Wukong", id, "set", "ssid", obj.SSID, obj.PWD ).then(function( data ){
+        // obj.SSID, obj.PWD
+          connecteWifi( "Wukong", "808600016928", "set", "ssid", "XCKJ", "XCKJ8888" ).then(function( data ){
             resolve( data );
           })
   
