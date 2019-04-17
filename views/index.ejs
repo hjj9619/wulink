@@ -314,8 +314,8 @@
           }
 
 
-          $('.mode span').text( directName );
-          $('.mode span').data( 'mode', setDirect );
+          $('.direct span').text( directName );
+          $('.direct span').data( 'direct', setDirect );
         }
 
       })
@@ -362,22 +362,20 @@
               windName = "自动";
               break;
             case 1:
-              windName = "风向1";
+              windName = "风速1";
               break;
             case 2:
-              windName = "风向2";
+              windName = "风速2";
               break;
             case 3:
-              windName = "风向3";
+              windName = "风速3";
               break;
-            case 4:
-              windName = "风向4";
-              break;
+            
           }
 
 
-          $('.mode span').text( windName );
-          $('.mode span').data( 'mode', setWind );
+          $('.wind span').text( windName );
+          $('.wind span').data( 'wind', setWind );
         }
 
       })

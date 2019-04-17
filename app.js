@@ -226,7 +226,7 @@ app.post('/air/mode', function( req, res ){
 
 })
 
-app.post('/air/direct', function(){
+app.post('/air/direct', function(req, res){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( "客户端提交的数据________" );
     console.log( data );
@@ -250,7 +250,7 @@ app.post('/air/direct', function(){
 
 
 
-app.post('/air/wind', function(){
+app.post('/air/wind', function(req, res){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( "客户端提交的数据________" );
     console.log( data );
