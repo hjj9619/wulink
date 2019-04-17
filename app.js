@@ -152,7 +152,7 @@ app.get('/air/wifi', function( req, res ){
 app.post('/air/temp/down', function( req, res ){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( data );
-    if( data.onoff == 0 ){
+    if( data.data.onoff == 0 ){
       req.on('data', function( data ){
 
         console.log( JSON.parse( data ) );
@@ -185,7 +185,7 @@ app.post('/air/temp/down', function( req, res ){
 app.post('/air/temp/up', function( req, res ){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( data );
-    if( data.onoff == 0 ){
+    if( data.data.onoff == 0 ){
       req.on('data', function( data ){
 
         console.log( JSON.parse( data ) );
@@ -213,7 +213,7 @@ app.post('/air/mode', function( req, res ){
 
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( data );
-    if( data.onoff == 0 ){
+    if( data.data.onoff == 0 ){
 
       req.on('data', function( data ){
         let obj = JSON.parse( data );
