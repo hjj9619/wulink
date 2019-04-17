@@ -151,14 +151,12 @@ app.get('/air/wifi', function( req, res ){
 ///  降温
 app.post('/air/temp/down', function( req, res ){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
+    console.log( "客户端提交的数据________" );
     console.log( data );
     if( data.data.onoff == 0 ){
       req.on('data', function( data ){
 
         let obj = JSON.parse( data );
-        
-        let setTemp = JSON.parse( data ).setTemp;
-        console.log( setTemp );
     
     
         //808600016928
@@ -182,14 +180,13 @@ app.post('/air/temp/down', function( req, res ){
 /// 升温
 app.post('/air/temp/up', function( req, res ){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
+    console.log( "客户端提交的数据________" );
     console.log( data );
     if( data.data.onoff == 0 ){
       req.on('data', function( data ){
 
         let obj = JSON.parse( data );
         
-        let setTemp = JSON.parse( data ).setTemp;
-        console.log( setTemp );
     
         //808600016928
         // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
@@ -208,6 +205,7 @@ app.post('/air/temp/up', function( req, res ){
 app.post('/air/mode', function( req, res ){
 
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
+    console.log( "客户端提交的数据________" );
     console.log( data );
     if( data.data.onoff == 0 ){
 
