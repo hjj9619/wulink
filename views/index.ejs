@@ -110,7 +110,7 @@
     });
 
     //调整温度
-    $('.down').click(function(){
+    $('.ctrlTemp .down').click(function(){
       let currentTemp = parseInt( $('.temp span').text() ) - 16;
       console.assert( "currentTemp_____" + currentTemp );
       let setTemp = currentTemp - 1;
@@ -122,6 +122,7 @@
         $.post('/air/temp/down', JSON.stringify( { "setTemp": setTemp } ), function( data ){
           if( data ){
             console.log( data );
+            ///// 需要判断是否成功
             $('.temp span').text( setTemp + 16 );
           }
         })
@@ -129,6 +130,26 @@
       }
 
       
+    })
+    // 升温
+    $('.ctrlTemp .up').click(function(){
+      let currentTemp = parseInt( $('.temp span').text() ) - 16;
+      console.assert( "currentTemp_____" + currentTemp );
+      let setTemp = currentTemp + 1;
+      if( currentTemp == 14 ){
+        alert( '不能再升温了!' );
+      }else{
+
+        // 升温 1 摄氏度
+        $.post('/air/temp/up', JSON.stringify( { "setTemp": setTemp } ), function( data ){
+          if( data ){
+            console.log( data );
+            ///// 需要判断是否成功
+            $('.temp span').text( setTemp + 16 );
+          }
+        })
+
+      }
     })
   </script>
 </html>
