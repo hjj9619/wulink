@@ -44,6 +44,7 @@ app.get('/air', function( req, res ){
     let online;
     getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( data ){
       online = data;
+      console.log( data );
     })
     console.log( online );
 
@@ -140,74 +141,63 @@ app.get('/air/wifi', function( req, res ){
 // match_process
 
 app.post('/air/red', function( req, res){
-  req.on('data', function( data ){
+  getLocalToken().then(function(data){
+    // console.log( data );
+  
+    let now = new Date().getTime();
+    let nonce = "ASaSJLLJIOqeoiaq"
+    let SIGN = md5(conf.appId + data + nonce + now);
+
+    let formData = {
+      "appid": conf.appId,
+      "nonce": nonce,
+      "timestamp": now,
+      "sign": SIGN,
+      "devtype": "Wukong",
+      "cmdtype": "set",
+      "cmd": "match_process",
+      "onoff": "0",
+      "mode": 1,
+      "temp": 10,
+      "wind": 0,
+      "direct": 1,
+      "key": 2
+    }
+
+    let url2 = conf.deviceUrl + "808600016928";
+    let str = JSON.stringify( formData );
+
+    // let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
     
-    // let obj = JSON.parse( data );
-    // console.log( obj );
-
-    //808600016928
-    // setDeviceInfo( "Wukong", "808600016928", "set", "match_process", 0 ).then(function( data ){
-    //   console.log( data );
-    // });
-
-    getLocalToken().then(function(data){
-      // console.log( data );
-    
-      let now = new Date().getTime();
-      let nonce = "ASaSJLLJIOqeoiaq"
-      let SIGN = md5(conf.appId + data + nonce + now);
-
-      let formData = {
-        "appid": conf.appId,
-        "nonce": nonce,
-        "timestamp": now,
-        "sign": SIGN,
-        "devtype": "Wukong",
-        "cmdtype": "set",
-        "cmd": "match_process",
-        "onoff": "0",
-        "mode": 1,
-        "temp": 10,
-        "wind": 0,
-        "direct": 1,
-        "key": 2
-      }
-
-      let url2 = conf.deviceUrl + "808600016928";
-      let str = JSON.stringify( formData );
-
-      // let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
-      
-      request.post(url2, {formData: formData, json: true}, function( err, response, body ){
-        if( !err ){
-          // console.log( response );
-          console.log("设置红外的返回结果——————————")
-          console.log( body );
-          console.log("ERROR：————————")
-          console.log( err );
-        }
-      })
-    
-    
-    }).then(function(  ){
-      getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
+    request.post(url2, {formData: formData, json: true}, function( err, response, body ){
+      if( !err ){
+        // console.log( response );
+        console.log("设置红外的返回结果——————————")
         console.log( body );
-        if( body.data.match_action == 1 ){
-          console.log( "红外匹配成功!" );
-          // res.redirect('/air');
-        }else{
-          console.log(" 红外匹配失败！ ");
-          console.log( body );
-        }
-      })
+        console.log("ERROR：————————")
+        console.log( err );
+      }
     })
-
-    
-
-
-    
-
+  
+  
+  }).then(function(  ){
+    getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
+      console.log( body );
+      if( body.data.match_action == 1 ){
+        console.log( "红外匹配成功!" );
+        // res.redirect('/air');
+      }else{
+        console.log(" 红外匹配失败！ ");
+        console.log( body );
+      }
+    })
   })
+
+    
+
+
+    
+
 
   res.send("匹配红外中……")
 
