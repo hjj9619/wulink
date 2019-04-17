@@ -35,7 +35,7 @@ let conf = require("./conf/conf");
 app.listen(3001);
 
 
-getAccessToken();
+// getAccessToken();
 
 
 
@@ -94,7 +94,7 @@ app.post('/air/off', function( req, res){
 
 })
 
-
+// 配置 WIFI
 app.get('/air/wifi', function( req, res ){
   // console.log( req.body );
 
@@ -141,7 +141,6 @@ app.get('/air/wifi', function( req, res ){
 
 
 // match_process
-
 app.post('/air/red', function( req, res){
   getLocalToken().then(function(data){
     // console.log( data );

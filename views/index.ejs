@@ -110,8 +110,9 @@
     });
 
     //调整温度
-    $('#down').click(function(){
+    $('.down').click(function(){
       let currentTemp = parseInt( $('.temp span').text() ) - 16;
+      console.assert( "currentTemp_____" + currentTemp );
       let setTemp = currentTemp - 1;
       if( currentTemp == 0 ){
         alert( '不能再降温了!' );
