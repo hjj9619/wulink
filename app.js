@@ -184,9 +184,10 @@ app.post('/air/red', function( req, res){
           console.log( err );
         }
       })
+      resolve( res );
     
     
-    }).then(function( ){
+    }).then(function( res ){
       getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
         console.log( body );
         if( body.data.match_action == 1 ){
@@ -212,3 +213,6 @@ app.post('/air/red', function( req, res){
 
 
 
+
+
+/////////
