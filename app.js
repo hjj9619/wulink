@@ -152,7 +152,7 @@ getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
 app.post('/air/temp/down', function( req, res ){
   getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
     console.log( data );
-    if( data.data == 1 ){
+    if( data.data == 0 ){
       req.on('data', function( data ){
 
         console.log( JSON.parse( data ) );
@@ -172,7 +172,7 @@ app.post('/air/temp/down', function( req, res ){
     
       })
     }else{
-      res.send({'errCode':1, 'errMsg': '设备离线状态，无法进行此操作！'})
+      res.send({'errCode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
     }
   })
 
@@ -183,9 +183,9 @@ app.post('/air/temp/down', function( req, res ){
 
 /// 升温
 app.post('/air/temp/up', function( req, res ){
-  getDeviceInfo("Wukong", "808600016928", "get", "online").then(function( data ){
+  getDeviceInfo("Wukong", "808600016928", "get", "onoff").then(function( data ){
     console.log( data );
-    if( data.data == 1 ){
+    if( data.data == 0 ){
       req.on('data', function( data ){
 
         console.log( JSON.parse( data ) );
@@ -202,7 +202,7 @@ app.post('/air/temp/up', function( req, res ){
         })
       })
     }else{
-      res.send({'errCode':1, 'errMsg': '设备离线状态，无法进行此操作！'})
+      res.send({'errCode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
     }
   })
 })

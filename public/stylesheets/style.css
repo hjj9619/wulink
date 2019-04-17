@@ -98,6 +98,7 @@ body{
     text-indent: -1000000px;
     border-radius: 50%;
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
+    margin-top: 7px;
 }
