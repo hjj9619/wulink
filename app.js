@@ -155,7 +155,7 @@ app.post('/air/temp/down', function( req, res ){
     if( data.data.onoff == 0 ){
       req.on('data', function( data ){
 
-        console.log( JSON.parse( data ) );
+        let obj = JSON.parse( data );
         
         let setTemp = JSON.parse( data ).setTemp;
         console.log( setTemp );
@@ -163,9 +163,7 @@ app.post('/air/temp/down', function( req, res ){
     
         //808600016928
         // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
-        setDeviceInfo('808600016928', {
-          "temp": setTemp
-        }).then(function( data ){
+        setDeviceInfo('808600016928', obj ).then(function( data ){
           res.send( data );
         })
     
@@ -188,16 +186,14 @@ app.post('/air/temp/up', function( req, res ){
     if( data.data.onoff == 0 ){
       req.on('data', function( data ){
 
-        console.log( JSON.parse( data ) );
+        let obj = JSON.parse( data );
         
         let setTemp = JSON.parse( data ).setTemp;
         console.log( setTemp );
     
         //808600016928
         // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
-        setDeviceInfo('808600016928', {
-          "temp": setTemp
-        }).then(function( data ){
+        setDeviceInfo('808600016928', obj).then(function( data ){
           res.send( data );
         })
       })
