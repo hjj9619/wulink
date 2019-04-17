@@ -3,7 +3,8 @@ let app = express();
 let ejs = require('ejs');
 let path = require("path");
 let bodyParser = require('body-parser');
-
+let md5 = require('md5');
+let request = require('request');
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: 'application/*+json' }))
@@ -30,7 +31,7 @@ let conf = require("./conf/conf");
 
 
 
-app.listen(3000);
+app.listen(3001);
 
 
 // getAccessToken();
@@ -40,14 +41,16 @@ app.listen(3000);
 // 空调首页
 app.get('/air', function( req, res ){
   
-  getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
-    // console.log( body );
     let online;
     getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( data ){
       online = data;
     })
     console.log( online );
-    body.data.online = 0;
+
+  getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
+    // console.log( body );
+    body.data.online = online;
+    
     res.render( 'index', body.data );
     
   }).catch(function( err ){
@@ -107,20 +110,19 @@ app.get('/air/wifi', function( req, res ){
         //808600016928
 
           connecteWifi( "Wukong", id, "set", "ssid", obj.SSID, obj.PWD ).then(function( data ){
-            resolve( data, res );
+            resolve( data );
           })
   
       })
   
     })
-  }).then(function( data, res ){
+  }).then(function( data ){
 
 
     console.log( data );
     if( data.errcode === 0 ){
 
       console.log( "WIFI连接成功！" );
-      res.end("success");
 
       // 如果 WIIF 连接成功，就跳转回主页
       // res.redirect('/air');
@@ -171,7 +173,7 @@ app.post('/air/red', function( req, res){
         "key": 2
       }
 
-      let url2 = conf.deviceUrl + id;
+      let url2 = conf.deviceUrl + "808600016928";
       let str = JSON.stringify( formData );
 
       // let url = conf.deviceUrl + id + `?appid=${ conf.appId }&nonce=ASaSJLLJIOqeoiaq&timestamp=${ now }&sign=${ SIGN }&devtype=${ devType }&cmdtype=${ cmdType }&cmd=${ cmd }` ;
@@ -185,15 +187,14 @@ app.post('/air/red', function( req, res){
           console.log( err );
         }
       })
-      resolve( res );
     
     
-    }).then(function( res ){
+    }).then(function(  ){
       getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
         console.log( body );
         if( body.data.match_action == 1 ){
           console.log( "红外匹配成功!" );
-          res.redirect('/air');
+          // res.redirect('/air');
         }else{
           console.log(" 红外匹配失败！ ");
           console.log( body );
