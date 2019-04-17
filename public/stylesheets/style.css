@@ -46,13 +46,19 @@ body{
     text-align: center;
     color: rgb(212, 0, 255);
 }
+.main .onoff{
+    /* 风速 */
+    text-align: center;
+    /* color: rgb(212, 0, 255); */
+}
 
-.onoff{
+
+.onoffBtn{
     height: 50px;
     border: 1px solid yellowgreen;
 
 }
-.onoff .on, .onoff .off{
+.onoffBtn .on, .onoffBtn .off{
     width: 50%;
     height: 100%;
     color: 20px;
