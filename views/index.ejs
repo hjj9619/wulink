@@ -96,17 +96,22 @@
     $("#on").click(function(){
       $.post("/air/on", JSON.stringify({data: "打开空调"}), function(data,status){
         console.log( data );
-        console.log( status );
+        if( !data.errcode ){
+          $('.onoff span').text("打开状态").removeClass('red').addClass('green');
+        }else{
+          console.log( data );
+        }
       });
-      $('.onoff span').text("打开状态").removeClass('red').addClass('green');
 
     });
     $("#off").click(function(){
       $.post("/air/off", JSON.stringify({data: "关闭空调"}), function(data,status){
         console.log( data );
-        console.log( status );
+        if( !data.errcode ){ // errorcode = 0,代表请求成功
+          $('.onoff span').text("关闭状态").removeClass('green').addClass('red');
+        }
       });
-      $('.onoff span').text("关闭状态").removeClass('green').addClass('red');
+      
     });
 
     //调整温度
@@ -120,13 +125,14 @@
 
         // 降温 1 摄氏度
         $.post('/air/temp/down', JSON.stringify( { "setTemp": setTemp } ), function( data ){
-          if( data ){
+          if( !data.errcode ){
             console.log( data );
             ///// 需要判断是否成功
             $('.temp span').text( setTemp + 16 );
+          }else{
+            console.log( data );
           }
         })
-
       }
 
       
@@ -142,10 +148,12 @@
 
         // 升温 1 摄氏度
         $.post('/air/temp/up', JSON.stringify( { "setTemp": setTemp } ), function( data ){
-          if( data ){
+          if( !data.errcode ){
             console.log( data );
             ///// 需要判断是否成功
             $('.temp span').text( setTemp + 16 );
+          }else{
+            console.log( data );
           }
         })
 

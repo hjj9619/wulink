@@ -67,8 +67,9 @@ app.get('/air', function( req, res ){
 app.post('/air/on', function( req, res){
   req.on('data', function( data ){
     
-    // let obj = JSON.parse( data );
-    // console.log( obj );
+    
+    console.log( JSON.parse( data ) );
+
 
     //808600016928
     // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 0 );
@@ -85,10 +86,9 @@ app.post('/air/on', function( req, res){
 // 关闭空调
 app.post('/air/off', function( req, res){
   req.on('data', function( data ){
+   
+    console.log( JSON.parse( data ) );
     
-    // let obj = JSON.parse( data );
-    // console.log( obj );
-
     //808600016928
     // "Wukong", "808600016928", "set", "air_ctrl", 1 
     setDeviceInfo('808600016928', {
@@ -156,7 +156,7 @@ app.post('/air/temp/down', function( req, res ){
 
   req.on('data', function( data ){
 
-    console.log( data );
+    console.log( JSON.parse( data ) );
     
     let setTemp = JSON.parse( data ).setTemp;
     console.log( setTemp );
@@ -181,7 +181,7 @@ app.post('/air/temp/up', function( req, res ){
 
   req.on('data', function( data ){
 
-    console.log( data );
+    console.log( JSON.parse( data ) );
     
     let setTemp = JSON.parse( data ).setTemp;
     console.log( setTemp );
