@@ -41,15 +41,15 @@ app.listen(3001);
 // 空调首页
 app.get('/air', function( req, res ){
   
-    let online;
-    getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( body ){
-      // online = data;
-      console.log( body.data.online );
-    })
+    
 
   getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function( body ){
-    // console.log( body );
-    // body.data.online = online;
+    let online;
+    getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function( onLineBody ){
+      online = onLineBody.data.online;
+      console.log( onLineBody.data.online );
+    })
+    body.data.online = online;
     
     res.render( 'index', body.data );
     
