@@ -71,9 +71,13 @@ app.post('/air/on', function( req, res){
     // console.log( obj );
 
     //808600016928
-    setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 0 );
+    // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 0 );
+    setDeviceInfo( '808600016928', {
+      'onoff': 0
+    }).then(function( data ){
+      res.send( data );
+    })
 
-    res.send("数据已成功接收！");
   })
 
 })
@@ -86,9 +90,13 @@ app.post('/air/off', function( req, res){
     // console.log( obj );
 
     //808600016928
-    setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+    // "Wukong", "808600016928", "set", "air_ctrl", 1 
+    setDeviceInfo('808600016928', {
+      'onoff': 1
+    }).then(function( data ){
+      res.send( data );
+    });
 
-    res.send("数据已成功接收！");
 
   })
 
@@ -139,6 +147,41 @@ app.get('/air/wifi', function( req, res ){
 })
 
 
+
+
+
+
+
+app.post('/air/temp/down', function( req, res ){
+
+  req.on('data', function( data ){
+
+    console.log( data );
+    
+    let setTemp = JSON.parse( data ).setTemp;
+    console.log( setTemp );
+
+
+    //808600016928
+    // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
+    setDeviceInfo('808600016928', {
+      "temp": setTemp
+    }).then(function( data ){
+      res.send( data );
+    })
+
+
+  })
+
+})
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+/////////   【以下代码需要大量优化】 /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 // match_process
 app.post('/air/red', function( req, res){
@@ -195,33 +238,3 @@ app.post('/air/red', function( req, res){
   })
   res.send("匹配红外中……")
 })
-
-
-
-
-app.post('/air/temp/down', function( req, res ){
-
-  req.on('data', function( data ){
-
-    console.log( data );
-    
-    let setTemp = JSON.parse( data ).setTemp;
-    console.log( setTemp );
-
-
-    //808600016928
-    // setDeviceInfo( "Wukong", "808600016928", "set", "air_ctrl", 1 );
-    setDeviceInfo('808600016928', {
-      "temp": setTemp
-    }).then(function( data ){
-      res.send( data );
-    })
-
-
-  })
-
-})
-
-
-
-/////////
