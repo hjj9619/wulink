@@ -177,9 +177,9 @@ app.post('/air/red', function( req, res){
       request.post(url2, {formData: formData, json: true}, function( err, response, body ){
         if( !err ){
           // console.log( response );
-          console.log("设置红外的返回结果")
+          console.log("设置红外的返回结果——————————")
           console.log( body );
-        }else{
+          console.log("ERROR：————————")
           console.log( err );
         }
       })
