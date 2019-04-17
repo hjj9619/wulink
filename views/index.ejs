@@ -94,7 +94,9 @@
   <script>
 
     $("#on").click(function(){
-      $.post("/air/on", JSON.stringify({data: "打开空调"}), function(data,status){
+      let currentTemp = parseInt( $('.temp span').text() ) - 16;
+      let onoff = 0;
+      $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function(data,status){
         console.log( data );
         if( !data.errcode ){
           $('.onoff span').text("打开状态").removeClass('red').addClass('green');
@@ -105,7 +107,10 @@
 
     });
     $("#off").click(function(){
-      $.post("/air/off", JSON.stringify({data: "关闭空调"}), function(data,status){
+      let currentTemp = parseInt( $('.temp span').text() ) - 16;
+      let onoff = 1;
+
+      $.post("/air/off", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function(data,status){
         console.log( data );
         if( !data.errcode ){ // errorcode = 0,代表请求成功
           $('.onoff span').text("关闭状态").removeClass('green').addClass('red');
