@@ -35,7 +35,7 @@ let conf = require("./conf/conf");
 app.listen(3000);
 
 
-getAccessToken();
+// getAccessToken();
 
 
 
@@ -59,6 +59,7 @@ app.get('/air', function( req, res ){
   }).catch(function( err ){
     if( err ) console.log( err );
   });
+  
 })
 
 
