@@ -33,24 +33,26 @@ function getLocalToken(){
                 });
             }else{
                 obj = JSON.parse(data);
-            }
 
-            if( err ){
-                reject( err );
-            }else{
-
-
-                // 将现在的时间 与 之前存的 Access 时间 进行对比，如果 Access 存储已经超过 7000s，就重新获取 Access_Token，否则直接返回之前获取到的 token
-                let now = new Date().getTime();
-                if( now - obj.timestamp > 7000 ){
-                    getAccessToken();
+                if( err ){
+                    reject( err );
                 }else{
-                    resolve( obj.access_token )
+    
+    
+                    // 将现在的时间 与 之前存的 Access 时间 进行对比，如果 Access 存储已经超过 7000s，就重新获取 Access_Token，否则直接返回之前获取到的 token
+                    let now = new Date().getTime();
+                    if( now - obj.timestamp > 7000 ){
+                        getAccessToken();
+                    }else{
+                        resolve( obj.access_token )
+                    }
+                    
+                    resolve( obj );
+    
                 }
-                
-                resolve( obj );
-
             }
+
+            
 
         })
 
