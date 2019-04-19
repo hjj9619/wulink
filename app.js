@@ -22,8 +22,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set( 'view engine', 'ejs' );
 
 
-let getAccessToken = require('./util/getAccessToken').getAccessToken;
-let getLocalToken = require('./util/getAccessToken').getLocalToken;
+let getAccessToken = require('./util/getAccess').getAccessToken;
+let getLocalToken = require('./util/getAccess').getLocalToken;
 let getDeviceInfo = require('./libs/ctrl').getDeviceInfo;
 let setDeviceInfo = require('./libs/ctrl').setDeviceInfo;
 let connecteWifi = require('./libs/ctrl').connecteWifi;
@@ -33,8 +33,6 @@ let conf = require("./conf/conf");
 
 
 app.listen(3000);
-
-
 // getAccessToken();
 
 
@@ -140,15 +138,6 @@ app.get('/air/wifi', function( req, res ){
 })
 
 
-// // 判断空调是否为开机状态，否则不进行调温操作
-// getDeviceInfo("Wukong", "808600016928", "get", "onoff").then(function( data ){
-//   console.log( data );
-//   if( data.data == 1 ){
-
-//   }
-// })
-
-
 ///  降温
 app.post('/air/temp/down', function( req, res ){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
@@ -226,7 +215,7 @@ app.post('/air/mode', function( req, res ){
   })
 
 })
-
+// 风向
 app.post('/air/direct', function(req, res){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( "客户端提交的数据________" );
@@ -248,9 +237,7 @@ app.post('/air/direct', function(req, res){
     }
   })
 })
-
-
-
+// 风速
 app.post('/air/wind', function(req, res){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
     console.log( "客户端提交的数据________" );
@@ -272,6 +259,26 @@ app.post('/air/wind', function(req, res){
     }
   })
 })
+
+
+app.post('/air/addtimer', function( req, res ){
+
+
+  req.on('data', function( data ){
+    let obj = JSON.parse( data );
+    console.log(  obj );
+
+    setDeviceInfo('808600016928', obj ).then(function( data ){
+      res.send( data );
+    })
+  })
+
+
+
+})
+
+
+
 
 
 //////////////////////////////////////////////////////////////////////

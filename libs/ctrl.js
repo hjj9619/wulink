@@ -1,7 +1,7 @@
 let request = require('request');
 let md5 = require('md5');
 let conf = require('../conf/conf');
-let getLocalToken = require('../util/getAccessToken').getLocalToken;
+let getLocalToken = require('../util/getAccess').getLocalToken;
 
 
 

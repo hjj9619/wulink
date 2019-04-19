@@ -1,3 +1,9 @@
+body, div, ul, li, button, span, input{
+    margin: 0;
+    padding: 0;
+}
+
+
 .green{
     color: green;
 }
@@ -81,26 +87,29 @@ body{
 .ctrl .ctrlOthers, .ctrl .ctrlTemp{
     float: left;
 }
-.ctrl .ctrlTemp, .ctrl .ctrlOthers{
+.ctrl .ctrlTemp, .ctrl .ctrlOthers, .ctrl .ctrlTimer{
     width: 33.33%;
     height: 100%;
     border: 1px yellow solid;
 }
 .ctrl .ctrlTemp button{
     display: block;
-    margin: 0 auto;
     height: 50%;
     width: 100%;
     font-size: 4em;
 }
 .ctrl .ctrlOthers button{
     display: block;
-    margin: 0 auto;
     height: 33.333333%;
     width: 100%;
     font-size: 3em;
 }
-
+.ctrl .ctrlTimer button{
+    display: block;
+    height: 50%;
+    width: 100%;
+    font-size: 4em;
+}
 
 
 .airStatus{

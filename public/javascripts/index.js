@@ -245,35 +245,35 @@ $('.ctrlOthers .windBtn').click(function(){
 
     
     $.post('/air/wind', JSON.stringify( obj ), function( data ){
-    console.log(data.errcode)
-    if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
-        
-        console.log( data );
+        console.log(data.errcode)
+        if( data.errcode == 1 ){ // errorcode = 1,代表设备处于关机状态
+            
+            console.log( data );
 
-    }else{
-        console.log( data );
-        let windName;
+        }else{
+            console.log( data );
+            let windName;
 
-        switch( parseInt( setWind ) ){
-        case 0: 
-            windName = "自动";
-            break;
-        case 1:
-            windName = "低风";
-            break;
-        case 2:
-            windName = "中风";
-            break;
-        case 3:
-            windName = "高风";
-            break;
-        
+            switch( parseInt( setWind ) ){
+            case 0: 
+                windName = "自动";
+                break;
+            case 1:
+                windName = "低风";
+                break;
+            case 2:
+                windName = "中风";
+                break;
+            case 3:
+                windName = "高风";
+                break;
+            
+            }
+
+
+            $('.wind span').text( windName );
+            $('.wind span').data( 'wind', setWind );
         }
-
-
-        $('.wind span').text( windName );
-        $('.wind span').data( 'wind', setWind );
-    }
 
     })
 
