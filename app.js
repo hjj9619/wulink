@@ -324,7 +324,7 @@ app.post('/air/red', function( req, res ){
                 clearInterval( timer );
                 res.redirect('/air/red_fail');
                 console.log(" 红外匹配失败！ ");
-                res.send( body );
+                // res.send( body );
                 console.log( body );
               }, 1000 * 30 )
               
@@ -334,7 +334,7 @@ app.post('/air/red', function( req, res ){
       }else{
         console.log( "匹配红外失败！" );
         res.redirect('/air/red_fail');
-        res.send( data );
+        // res.send( data );
       }
 
     });
