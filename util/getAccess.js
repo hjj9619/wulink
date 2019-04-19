@@ -43,6 +43,8 @@ function getLocalToken(){
             if( err ){
                 reject( err );
             }else{
+                console.log( typeof data );
+                console.log( data );
                 let now = new Date().getTime();
                 let old = JSON.parse( data ).timestamp;
                 let token = JSON.parse( data ).access_token;
