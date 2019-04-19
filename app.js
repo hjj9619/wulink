@@ -193,10 +193,10 @@ app.post('/air/temp/up', function( req, res ){
 
 // 切换空调工作模式  0自动 1制冷 2除湿 3送风 4制热 
 app.post('/air/mode', function( req, res ){
+  
 
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
-    console.log( "客户端提交的数据________" );
-    console.log( data );
+
     if( data.data.onoff == 0 ){
 
       req.on('data', function( data ){
@@ -210,6 +210,10 @@ app.post('/air/mode', function( req, res ){
         })
       })
     }else{
+      req.on('data', function( data ){
+        console.log( "客户端提交的数据____切换模式____" );
+        console.log( JSON.parse( data ) );
+      })
       res.send({'errcode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
     }
   })
@@ -218,8 +222,6 @@ app.post('/air/mode', function( req, res ){
 // 风向
 app.post('/air/direct', function(req, res){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
-    console.log( "客户端提交的数据________" );
-    console.log( data );
     if( data.data.onoff == 0 ){
 
       req.on('data', function( data ){
@@ -233,6 +235,10 @@ app.post('/air/direct', function(req, res){
         })
       })
     }else{
+      req.on('data', function( data ){
+        console.log( "客户端提交的数据____切换风向____" );
+        console.log( JSON.parse( data ) );
+      })
       res.send({'errcode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
     }
   })
@@ -240,8 +246,6 @@ app.post('/air/direct', function(req, res){
 // 风速
 app.post('/air/wind', function(req, res){
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function( data ){
-    console.log( "客户端提交的数据________" );
-    console.log( data );
     if( data.data.onoff == 0 ){
 
       req.on('data', function( data ){
@@ -255,6 +259,10 @@ app.post('/air/wind', function(req, res){
         })
       })
     }else{
+      req.on('data', function( data ){
+        console.log( "客户端提交的数据___切换风速_____" );
+        console.log( JSON.parse( data ) );
+      })
       res.send({'errcode':1, 'errMsg': '设备处于关机状态，无法进行此操作！'})
     }
   })

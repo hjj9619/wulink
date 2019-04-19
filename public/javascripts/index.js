@@ -107,9 +107,9 @@ $('.ctrlOthers .modeBtn').click(function(){
 
     let setMode = currentMode;
     if( setMode < 4 ){
-    setMode++;
+        setMode++;
     }else{
-    setMode = 0;
+        setMode = 0;
     }
     
     
@@ -230,9 +230,9 @@ $('.ctrlOthers .windBtn').click(function(){
 
     let setWind = currentWind;
     if( setWind < 3 ){
-    setWind++;
+        setWind++;
     }else{
-    setWind = 0;
+        setWind = 0;
     }
     
     

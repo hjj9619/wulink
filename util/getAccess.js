@@ -34,6 +34,8 @@ function getAccessToken(){
                     })
     })
 }
+
+
 //b0cc137688874be2838564b47ebd7137
 
 function getLocalToken(){
@@ -51,9 +53,9 @@ function getLocalToken(){
                 let token = JSON.parse( data ).access_token;
                 
                 if( now - old > 6800 * 1000 ){
-                    console.log( "Now____" + now );
-                    console.log( "Old___" + old );
-                    console.log( now - old );
+                    console.log( "当前的时间____" + now );
+                    console.log( "上一次存储 Token 的时间___" + old );
+                    console.log( "当前时间 - 上次存储 Token 的时间 = " + now - old );
 
                     getAccessToken().then(function(){
                         getLocalToken();
