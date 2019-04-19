@@ -25,8 +25,9 @@ function getAccessToken(){
                             console.log( "获取 Access_Token 时的返回值！");
                             console.log( body );
                             body.data['timestamp'] = now;
+                            console.log( body.data );
                             
-                            fs.writeFile( path.join( __dirname, '../conf/access.json' ), body.data, function( err ){
+                            fs.writeFile( path.join( __dirname, '../conf/access.json' ), JSON.stringify( body.data ), function( err ){
                                 if( err ) console.log( err );
                             })
                         }  
