@@ -50,7 +50,7 @@ function getLocalToken(){
                 let old = JSON.parse( data ).timestamp;
                 let token = JSON.parse( data ).access_token;
                 
-                if( now - old > 6800 ){
+                if( now - old > 6800 * 1000 ){
                     console.log( "Now____" + now );
                     console.log( "Old___" + old );
                     console.log( now - old );
