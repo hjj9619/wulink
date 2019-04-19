@@ -304,6 +304,7 @@ app.get('/air/red_fail', function( req, res ){
 app.post('/air/red', function( req, res ){
   req.on('data', function( data ){
     let obj = JSON.parse( data );
+    console.log( obj );
     setDeviceInfo( "808600016928", obj ).then(function( data ){
       // res.send( data );
 
@@ -312,22 +313,24 @@ app.post('/air/red', function( req, res ){
         let timer = setInterval(function(){
         
           getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
+            console.log( "红外匹配中！" );
             console.log( body );
             if( body.data.match_action == 1 ){
               console.log( "红外匹配成功!" );
-              clearInterval( timer );
               res.redirect('/air');
+              clearInterval( timer );
             }else{
               setTimeout(function(){
                 clearInterval( timer );
-              }, 1000 * 15 )
-              res.redirect('/air/red_fail');
-              console.log(" 红外匹配失败！ ");
-              res.send( body );
-              console.log( body );
+                res.redirect('/air/red_fail');
+                console.log(" 红外匹配失败！ ");
+                res.send( body );
+                console.log( body );
+              }, 1000 * 30 )
+              
             }
           })
-        }, 1500)
+        }, 3000)
       }else{
         console.log( "匹配红外失败！" );
         res.redirect('/air/red_fail');
@@ -340,7 +343,7 @@ app.post('/air/red', function( req, res ){
   })
 })
 
-
+/*
 app.post('/air/red', function( req, res){
   getLocalToken().then(function(data){
     // console.log( data );
@@ -397,3 +400,5 @@ app.post('/air/red', function( req, res){
   })
   res.send("匹配红外中……")
 })
+
+*/
