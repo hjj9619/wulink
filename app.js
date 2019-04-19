@@ -317,12 +317,12 @@ app.post('/air/red', function( req, res ){
             console.log( body );
             if( body.data.match_action == 1 ){
               console.log( "红外匹配成功!" );
-              res.redirect('/air');
+              res.redirect(301, '/air');
               clearInterval( timer );
             }else{
               setTimeout(function(){
                 clearInterval( timer );
-                res.redirect('/air/red_fail');
+                res.redirect(301, '/air/red_fail');
                 console.log(" 红外匹配失败！ ");
                 // res.send( body );
                 console.log( body );
@@ -332,8 +332,8 @@ app.post('/air/red', function( req, res ){
           })
         }, 3000)
       }else{
-        console.log( "匹配红外失败！" );
-        res.redirect('/air/red_fail');
+        // console.log( "匹配红外失败！" );
+        res.redirect(301, '/air/red_fail');
         // res.send( data );
       }
 
