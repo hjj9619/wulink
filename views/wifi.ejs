@@ -36,7 +36,7 @@
       });
     });
     $("#red").click(function(){
-      $.post("/air/red",{"cmd": "Match_process"}, function(data,status){
+      $.post("/air/red",{"cmd": "match_process"}, function(data,status){
         console.log( data );
         console.log( status + "AJAX" );
       });

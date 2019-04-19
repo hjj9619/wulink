@@ -296,7 +296,51 @@ app.post('/air/addtimer', function( req, res ){
 /////////////////////   【以下代码需要大量优化】 /////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+app.get('/air/red_fail', function( req, res ){
+  res.render('red_fail');
+})
+
 // match_process
+app.post('/air/red', function( req, res ){
+  req.on('data', function( data ){
+    let obj = JSON.parse( data );
+    setDeviceInfo( "808600016928", obj ).then(function( data ){
+      // res.send( data );
+
+      if( data.errcode == 0  ){
+
+        let timer = setInterval(function(){
+        
+          getDeviceInfo('Wukong', '808600016928', 'get', 'match_action').then(function( body ){
+            console.log( body );
+            if( body.data.match_action == 1 ){
+              console.log( "红外匹配成功!" );
+              clearInterval( timer );
+              res.redirect('/air');
+            }else{
+              setTimeout(function(){
+                clearInterval( timer );
+              }, 1000 * 15 )
+              res.redirect('/air/red_fail');
+              console.log(" 红外匹配失败！ ");
+              res.send( body );
+              console.log( body );
+            }
+          })
+        }, 1500)
+      }else{
+        console.log( "匹配红外失败！" );
+        res.redirect('/air/red_fail');
+        res.send( data );
+      }
+
+    });
+
+
+  })
+})
+
+
 app.post('/air/red', function( req, res){
   getLocalToken().then(function(data){
     // console.log( data );
@@ -331,6 +375,8 @@ app.post('/air/red', function( req, res){
         // console.log( response );
         console.log("设置红外的返回结果——————————")
         console.log( body );
+      }else{
+
         console.log("ERROR：————————")
         console.log( err );
       }
