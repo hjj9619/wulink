@@ -34,6 +34,7 @@ function getAccessToken(){
                     })
     })
 }
+//b0cc137688874be2838564b47ebd7137
 
 function getLocalToken(){
     return new Promise(function( resolve, reject ){
@@ -50,6 +51,10 @@ function getLocalToken(){
                 let token = JSON.parse( data ).access_token;
                 
                 if( now - old > 6800 ){
+                    console.log( "Now____" + now );
+                    console.log( "Old___" + old );
+                    console.log( now - old );
+
                     getAccessToken().then(function(){
                         getLocalToken();
                     });
