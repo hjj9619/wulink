@@ -1,6 +1,9 @@
 
+
+
 $("#on").click(function () {
-    let currentTemp = parseInt($('.temp span').text()) - 16;
+    // let currentTemp = parseInt($('.temp span').text()) - 16;
+    let currentTemp = 0;
     let onoff = 0;
     $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
         console.log(data);
@@ -106,7 +109,7 @@ $('.ctrlOthers .modeBtn').click(function () {
 
     if (online == 1) {
         if (Number(onoff) === 0) {  // 开机状态
-            let currentTemp = parseInt($('.temp span').text()) - 16;
+            let currentTemp = parseInt($('main-onoff').text()) - 16;
             let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
             let currentDirect = parseInt($('.direct span').data("direct"));
             let currentWind = parseInt($('.wind span').data("wind"));
@@ -197,7 +200,7 @@ $('.ctrlOthers .modeBtn').click(function () {
 
 // 切换空调风向 // 自动 风向1 风向2 风向3 风向4
 $('.ctrlOthers .directBtn').click(function () {
-    let currentTemp = parseInt($('.temp span').text()) - 16;
+    let currentTemp = parseInt($('.main-onoff').text()) - 16;
     let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
     let currentDirect = parseInt($('.direct span').data("direct")); // 0 - 4
     let currentWind = parseInt($('.wind span').data("wind")); // 0 - 3
@@ -259,7 +262,7 @@ $('.ctrlOthers .directBtn').click(function () {
 
 // 切换空调风速 // 自动 风速1 风速2 风速3
 $('.ctrlOthers .windBtn').click(function () {
-    let currentTemp = parseInt($('.temp span').text()) - 16;
+    let currentTemp = parseInt($('.main-onoff').text()) - 16;
     let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
     let currentDirect = parseInt($('.direct span').data("direct"));
     let currentWind = parseInt($('.wind span').data("wind"));
