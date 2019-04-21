@@ -24,23 +24,22 @@ let { getDeviceInfo, setDeviceInfo, connecteWifi } = require("./libs/ctrl");
 
 
 
-app.listen(3000);
+app.listen(4000);
 
-app.get('/air', (req, res) => {
-    res.render('index-test', {
-        online: 1,
-        temp: 0,
-        mode: 1,
-        direct: 0,
-        wind: 0,
-        onoff: 0
-    });
-})
-
-
+// app.get('/air', (req, res) => {
+//     res.render('index-test', {
+//         online: 1,
+//         temp: 0,
+//         mode: 1,
+//         direct: 0,
+//         wind: 0,
+//         onoff: 0
+//     });
+// })
 
 
-/*
+
+
 // 空调首页
 app.get('/air', function (req, res) {
 
@@ -289,7 +288,6 @@ app.post('/air/addtimer', function (req, res) {
         })
     })
 })
-*/
 
 
 
@@ -297,7 +295,6 @@ app.post('/air/addtimer', function (req, res) {
 //////////////////////////////////////////////////////////////////////
 /////////////////////   【以下代码需要大量优化】 /////////////////////////
 //////////////////////////////////////////////////////////////////////
-/*
 app.get('/air/red_fail', function (req, res) {
     res.render('red_fail');
 })
@@ -305,5 +302,3 @@ app.get('/air/red_fail', function (req, res) {
 // match_process
 let matchProccess = require('./router/matchProccess');
 app.use('/air/red', matchProccess);
-
-*/
