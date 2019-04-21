@@ -1,114 +1,118 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Air_Ctrl</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <div class="container">
-      <div class="airStatus">
-        <% if( online == 1 ){ %>
-          在线：<span class="green greenBg">设备在线</span>
-        <% }else if( online == 0 ){ %>
-          离线：<span class="red redBg">设备离线</span>
-        <% } %>
-      </div>
 
-      <div class="main">
-        <div class="temp">
-          <!--【温度】 16-30, 0-14 -->
-          <span><%= temp + 16 %></span> ℃
-        </div>
-        <div class="mode">
-          <!--【模式】 0自动，1制冷，2除湿，3送风，4制热 -->
-          模式：
-          <% if( mode == 0 ){ %>
-            <span data-mode=0>自动</span>
-          <% }else if( mode == 1 ){ %>
-            <span data-mode=1>制冷</span>
-          <% }else if( mode == 2 ){ %>
-            <span data-mode=2>除湿</span>
-          <% }else if( mode == 3 ){ %>
-            <span data-mode=3>送风</span>
-          <% }else if( mode == 4 ){ %>
-            <span data-mode=4>制热</span>
-          <% } %>
-        </div>
-        <div class="direct">
-          <!-- 【风向】0自动，1 风向1，2 风向2，3 风向3，4 风向4 -->
-          风向：
-          <% if( direct == 0 ){ %>
-            <span data-direct=0>自动</span>
-          <% }else if( direct == 1 ){ %>
-            <span data-direct=1>风向1</span>
-          <% }else if( direct == 2 ){ %>
-            <span data-direct=2>风向2</span>
-          <% }else if( direct == 3 ){ %>
-            <span data-direct=3>风向3</span>
-          <% }else if( direct == 4 ){ %>
-            <span data-direct=4>风向4</span>
-          <% } %>
-        </div>
-        <div class="wind">
-          <!-- 【风速】0自动，1 低风， 2 中风， 3 高风 -->
-          风速：
-          <% if( wind == 0 ){ %>
-            <span data-wind=0>自动</span>
-          <% }else if( wind == 1 ){ %>
-            <span data-wind=1>低风</span>
-          <% }else if( wind == 2 ){ %>
-            <span data-wind=2>中风</span>
-          <% }else if( wind == 3 ){ %>
-            <span data-wind=3>高风</span>
-          <% } %>
-        </div>
-        <div class="onoff">
-          <!-- 【开关】 0 开，1 关 -->
-            开关：
-            <% if( onoff == 0 ){ %>
-              <span class="green">打开状态</span>
-            <% }else if( onoff == 1 ){ %>
-              <span class="red">关闭状态</span>
-            <% } %>
-        </div>
-      </div>
+<head>
+  <title>Air_Ctrl</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
 
-      <div class="onoffBtn">
-          <!-- 【开关】 0 开，1 关 -->
-          
-          <button class="on" id="on">开</button>
-
-          <button class="off" id="off">关</button>
-      </div>
-
-      <div class="ctrl">
-        <div class="ctrlOthers">
-          <button class="modeBtn">模式</button>
-          <button class="directBtn">风向</button>
-          <button class="windBtn">风速</button>
-        </div>
-        <div class="ctrlTemp">
-          <button class="up"> + </button>
-          <button class="down"> - </button>
-        </div>
-        <div class="ctrlTimer" style="display:none;">
-          <button class="addTimer">
-            Add
-          </button>
-          <button class="clearTimer">
-            Clear
-          </button>
-        </div>
-      </div>
-
+<body>
+  <div class="container-full">
+    <div class="airStatus">
+      <% if( online == 1 ){ %>
+      在线：<span class="green greenBg">设备在线</span>
+      <% }else if( online == 0 ){ %>
+      离线：<span class="red redBg">设备离线</span>
+      <% } %>
     </div>
 
+    <div class="main">
+      <div class="temp">
+        <!--【温度】 16-30, 0-14 -->
+        <span><%= temp + 16 %></span> ℃
+      </div>
+      <div class="mode">
+        <!--【模式】 0自动，1制冷，2除湿，3送风，4制热 -->
+        模式：
+        <% if( mode == 0 ){ %>
+        <span data-mode=0>自动</span>
+        <% }else if( mode == 1 ){ %>
+        <span data-mode=1>制冷</span>
+        <% }else if( mode == 2 ){ %>
+        <span data-mode=2>除湿</span>
+        <% }else if( mode == 3 ){ %>
+        <span data-mode=3>送风</span>
+        <% }else if( mode == 4 ){ %>
+        <span data-mode=4>制热</span>
+        <% } %>
+      </div>
+      <div class="direct">
+        <!-- 【风向】0自动，1 风向1，2 风向2，3 风向3，4 风向4 -->
+        风向：
+        <% if( direct == 0 ){ %>
+        <span data-direct=0>自动</span>
+        <% }else if( direct == 1 ){ %>
+        <span data-direct=1>风向1</span>
+        <% }else if( direct == 2 ){ %>
+        <span data-direct=2>风向2</span>
+        <% }else if( direct == 3 ){ %>
+        <span data-direct=3>风向3</span>
+        <% }else if( direct == 4 ){ %>
+        <span data-direct=4>风向4</span>
+        <% } %>
+      </div>
+      <div class="wind">
+        <!-- 【风速】0自动，1 低风， 2 中风， 3 高风 -->
+        风速：
+        <% if( wind == 0 ){ %>
+        <span data-wind=0>自动</span>
+        <% }else if( wind == 1 ){ %>
+        <span data-wind=1>低风</span>
+        <% }else if( wind == 2 ){ %>
+        <span data-wind=2>中风</span>
+        <% }else if( wind == 3 ){ %>
+        <span data-wind=3>高风</span>
+        <% } %>
+      </div>
+      <div class="onoff">
+        <!-- 【开关】 0 开，1 关 -->
+        开关：
+        <% if( onoff == 0 ){ %>
+        <span class="green">打开状态</span>
+        <% }else if( onoff == 1 ){ %>
+        <span class="red">关闭状态</span>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="onoffBtn">
+      <!-- 【开关】 0 开，1 关 -->
+
+      <button class="on" id="on">开</button>
+
+      <button class="off" id="off">关</button>
+    </div>
+
+    <div class="ctrl">
+      <div class="ctrlOthers">
+        <button class="modeBtn">模式</button>
+        <button class="directBtn">风向</button>
+        <button class="windBtn">风速</button>
+      </div>
+      <div class="ctrlTemp">
+        <button class="up"> + </button>
+        <button class="down"> - </button>
+      </div>
+      <div class="ctrlTimer" style="display:none;">
+        <button class="addTimer">
+          Add
+        </button>
+        <button class="clearTimer">
+          Clear
+        </button>
+      </div>
+    </div>
+
+  </div>
 
 
-  </body>
 
-  <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
-  <script src="/javascripts/index.js"></script>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script src="/javascripts/index.js"></script>
 
 <script>
   // 增加定时器

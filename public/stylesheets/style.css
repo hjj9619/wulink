@@ -3,60 +3,106 @@ body, div, ul, li, button, span, input{
     padding: 0;
 }
 
-
 .green{
     color: green;
 }
 .red{
     color: red;
 }
-.redBg{
-    background: red;
-}
-.greenBg{
-    background: green;
-}
 
 body{
+    width:100%;
+    max-width: 360px;
+}
+
+/* body{
     width: 340px;
     height: 620px;
-}
-.container{
+} */
+/* .container{
     width: 100%;
     height: 100%;
     border: 1px solid red;
-}
-.main{
+} */
+
+/* .main{
     width: 240px;
     height: 240px;
     border: 1px solid green;
     border-radius: 50%;
     margin: 10px auto;
-}
-.main .temp{
+} */
+/* .main .temp{
     width: 100%;
     height: 45%;
     border: 1px solid yellow;
     color: red;
-    font-size: 4em;
     text-align: center;
     line-height: 100px;
     margin-top: 20px;
-}
-.main .mode{
-    /* 模式 */
+} */
+.main .main-onoff{
+    display: block;
+    font-size: 4em;
     text-align: center;
-    color: greenyellow;
 }
+.main .main-mode{
+    text-align: center;
+}
+
+.mode-bar{
+    /* border:1px solid red; */
+    height: 50px;
+    margin: 10px auto;
+}
+.mode-bar span{
+    margin: 0 !important;
+    width: 19%;
+    display: inline-block;
+    /* border: 1px solid blueviolet; */
+    height: 50px;
+    box-sizing: border-box;
+}
+
+/* 
+.snowflake-o  制冷
+
+*/
+.mode-bar span.auto{
+    background-image: url(../images/自动模式-gray.png);
+    background-position: 6px;
+    background-repeat: no-repeat;
+}
+.mode-bar span.cold{
+    background-image: url(../images/制冷-gray.png);
+    background-position: 6px;
+    background-repeat: no-repeat;
+}
+.mode-bar span.dehumidify{
+    background-image: url(../images/除湿-gray.png);
+    background-position: 6px;
+    background-repeat: no-repeat;
+}
+.mode-bar span.blower{
+    background-image: url(../images/送风-gray.png);
+    background-position: 6px;
+    background-repeat: no-repeat;
+}
+.mode-bar span.produceHeat{
+    background-image: url(../images/制热-gray.png);
+    background-position: 6px;
+    background-repeat: no-repeat;
+}
+
 .main .direct{
     /* 风向 */
     text-align: center;
-    color: blue;
+    /* color: blue; */
 }
 .main .wind{
     /* 风速 */
     text-align: center;
-    color: rgb(212, 0, 255);
+    /* color: rgb(212, 0, 255); */
 }
 .main .onoff{
     /* 风速 */
@@ -115,7 +161,8 @@ body{
 .airStatus{
     height: 30px;
     text-align: center;
-    line-height: 30px;
+    line-height: 17px;
+    margin-top: 10px;
 }
 .airStatus span{
     text-indent: -1000000px;
@@ -123,6 +170,5 @@ body{
     display: inline-block;
     width: 15px;
     height: 15px;
-    margin-top: 7px;
 }
 
