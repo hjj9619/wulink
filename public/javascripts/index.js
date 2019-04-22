@@ -8,7 +8,7 @@ $("#on").click(function () {
     $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
         console.log(data);
         if (!data.errcode) {
-            $('.main-onoff').text(currentTemp + "℃");
+            $('.main-onoff').text(currentTemp + 16 + "℃");
         } else {
             console.log(data);
         }
