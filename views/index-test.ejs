@@ -31,7 +31,8 @@
                     <!--【温度】 16-30, 0-14 -->
                     <span data-onoff=<%= onoff %> class="main-onoff"><%= temp + 16 %> ℃</span>
                     <% } %>
-                    <div class="row text-primary">
+                    <!-- row text-primary -->
+                    <div class="row  <% if (onoff===1){ %> text-primary  <%}else{%> text-muted <% } %>">
                         <div class="col-xs-4 ">
                             <div class="direct">
                                 <!-- 【风向】0自动，1 风向1，2 风向2，3 风向3，4 风向4 -->
@@ -50,7 +51,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-4">
+                        <div class=" col-xs-4">
                             <div class="main-mode">
                                 <!--【模式】 0自动，1制冷，2除湿，3送风，4制热 -->
                                 模式：

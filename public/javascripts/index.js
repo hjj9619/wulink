@@ -12,7 +12,7 @@ $("#on").click(function () {
             let currentMode = $('.main-mode span').data('mode');
 
 
-            $('.main-onoff').text(currentTemp + 16 + "℃");
+            $('.main-onoff').text(currentTemp + 16 + " ℃");
             $('.main-onoff').data("onoff", onoff);
 
             switch (parseInt(currentMode)) {
