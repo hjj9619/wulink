@@ -34,9 +34,6 @@ $("#on").click(function () {
                     break;
             }
 
-
-
-
         } else {
             console.log(data);
         }
@@ -81,8 +78,6 @@ $('.ctrlTemp .down').click(function () {
         let setTemp = currentTemp - 1;
 
 
-
-
         let obj = {
             "mode": currentMode,
             "temp": setTemp,
@@ -98,7 +93,7 @@ $('.ctrlTemp .down').click(function () {
                 console.log(data);
             } else {
                 console.log(data);
-                $('.temp span').text(setTemp + 16);
+                $('.main-onoff').text(setTemp + 16);
             }
         })
     }
@@ -135,7 +130,7 @@ $('.ctrlTemp .up').click(function () {
 
             } else {
                 console.log(data);
-                $('.temp span').text(setTemp + 16);
+                $('.main-onoff').text(setTemp + 16);
             }
         })
     }
