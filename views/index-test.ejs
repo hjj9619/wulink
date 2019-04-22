@@ -140,46 +140,25 @@
             </div>
         </div>
 
-        <div class="row onoffBtn">
 
-            <% if( onoff === 0 ){ %>
-            <div class="col-xs-6">
-                <!-- 【开关】 0 开，1 关 -->
-                <button class="btn btn-primary btn-block disabled on" id="on">开</button>
-            </div>
-            <div class="col-xs-6">
-                <button class="btn btn-primary btn-block off" id="off">关</button>
-            </div>
-            <% }else{ %>
-            <div class="col-xs-6">
-                <!-- 【开关】 0 开，1 关 -->
-                <button class="btn btn-primary btn-block on" id="on">开</button>
-            </div>
-            <div class="col-xs-6">
-                <button class="btn btn-primary btn-block disabled off" id="off">关</button>
-            </div>
-            <% } %>
-
-        </div>
 
         <div class="row ctrl">
-            <div class="col-xs-6 ctrlOthers">
+            <div class="col-xs-4 ctrlOthers">
                 <button class="btn modeBtn">模式</button>
                 <button class="btn directBtn">风向</button>
                 <button class="btn windBtn">风速</button>
             </div>
 
 
-            <!-- <div class="col-xs-4 ctrlTimer">
-                <button class="addTimer" style="display:none;">
-                    Add
-                </button>
-                <button class="clearTimer" style="display:none;">
-                    Clear
-                </button>
-            </div> -->
+            <div class="col-xs-4 ctrlOnoff">
+                <button class="btn none"></button>
+                <button class="btn onoffBtn">
 
-            <div class="col-xs-6 ctrlTemp">
+                </button>
+                <button class="btn none"></button>
+            </div>
+
+            <div class="col-xs-4 ctrlTemp">
                 <button class="btn up"> + </button>
                 <button class="btn none"></button>
                 <button class="btn down"> - </button>

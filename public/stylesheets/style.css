@@ -27,7 +27,7 @@ body{
 .mode-bar{
     /* border:1px solid red; */
     height: 50px;
-    margin: 10px auto;
+    margin: 30px auto;
 }
 .mode-bar span{
     margin: 0 !important;
@@ -171,9 +171,18 @@ body{
     background-position: 11px 11px;
 }
 
-.ctrlTemp .none{
-    touch-action: none;
+.ctrlOnoff button{
+    display: block;
+    height: 70px;
+    width: 70px;
+    margin: auto;
 }
+.ctrlOnoff .onoffBtn{
+    background-image: url('../images/on-off.png');
+    background-repeat: no-repeat;
+    background-position: 11px 11px;
+}
+
 
 
 .airStatus{
@@ -190,3 +199,33 @@ body{
     height: 15px;
 }
 
+
+
+/* 
+<div class="row onoffBtn">
+
+
+
+
+            <% if( onoff === 0 ){ %>
+            <div class="col-xs-6">
+                <!-- 【开关】 0 开，1 关 -->
+                <button class="btn btn-primary btn-block disabled on" id="on">开</button>
+            </div>
+            <div class="col-xs-6">
+                <button class="btn btn-primary btn-block off" id="off">关</button>
+            </div>
+            <% }else{ %>
+            <div class="col-xs-6">
+                <!-- 【开关】 0 开，1 关 -->
+                <button class="btn btn-primary btn-block on" id="on">开</button>
+            </div>
+            <div class="col-xs-6">
+                <button class="btn btn-primary btn-block disabled off" id="off">关</button>
+            </div>
+            <% } %>
+
+        </div>
+
+
+*/

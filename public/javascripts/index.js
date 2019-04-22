@@ -3,8 +3,8 @@
 
 $("#on").click(function () {
 
-    let currentTemp = parseInt($('.main-onoff').text()) - 16;
-    // let currentTemp = parseInt($('.main-onoff').data('temp'));
+    // let currentTemp = parseInt($('.main-onoff').text()) - 16;
+    let currentTemp = parseInt($('.main-onoff').data('temp'));
     let onoff = 0;
     $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
         console.log(data);

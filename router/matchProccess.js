@@ -19,24 +19,24 @@ router.post('/', function (req, res) {
             console.log(body);
             if (body.data.match_action == 1) {
               console.log("红外匹配成功!");
-              res.redirect(301, '/air');
+              // res.redirect(301, '/air');
+              res.send(body.data)
               clearInterval(timer);
             } else {
               setTimeout(function () {
                 clearInterval(timer);
                 // res.redirect(301, '/air/red_fail');
                 console.log(" 红外匹配失败！ ");
-                // res.send( body );
+                res.send(body);
                 console.log(body);
               }, 1000 * 30)
-
             }
           })
         }, 3000)
       } else {
         console.log("匹配红外失败！");
-        res.redirect(301, '/air/red_fail');
-        // res.send( data );
+        // res.redirect(301, '/air/red_fail');
+        res.send(data);
       }
 
     });

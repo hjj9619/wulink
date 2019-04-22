@@ -27,18 +27,19 @@ const port = 3000;
 app.listen(port, () => {
     console.log("http://localhost:" + port + "/air");
 });
+/*
 
-// app.get('/air', (req, res) => {
-//     res.render('index-test', {
-//         online: 1,
-//         temp: 0,
-//         mode: 1,
-//         direct: 0,
-//         wind: 0,
-//         onoff: 0
-//     });
-// })
-
+app.get('/air', (req, res) => {
+    res.render('index-test', {
+        online: 1,
+        temp: 0,
+        mode: 1,
+        direct: 0,
+        wind: 0,
+        onoff: 1
+    });
+})
+*/
 
 
 // 空调首页
@@ -63,7 +64,6 @@ app.get('/air', function (req, res) {
     });
 
 })
-
 
 
 
