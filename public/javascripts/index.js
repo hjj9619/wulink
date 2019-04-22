@@ -42,7 +42,7 @@ $("#on").click(function () {
     });
 });
 $("#off").click(function () {
-    let currentTemp = parseInt($('.main-onoff').text()) - 16;
+    // let currentTemp = parseInt($('.main-onoff').text()) - 16;
 
     let currentTemp = 0;
     let onoff = 1;
@@ -67,12 +67,12 @@ $("#off").click(function () {
 //调整温度 降温
 $('.ctrlTemp .down').click(function () {
 
-    let currentTemp = parseInt($('.temp span').text()) - 16;
+    let currentTemp = parseInt($('.main-onoff').text()) - 16;
     if (currentTemp == 0) {
         alert('不能再降温了!');  // 16摄氏度
     } else {
 
-        let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
+        let currentMode = parseInt($('.main-mode span').data("mode"));  // 0 - 4 
         let currentDirect = parseInt($('.direct span').data("direct"));
         let currentWind = parseInt($('.wind span').data("wind"));
         let setTemp = currentTemp - 1;
@@ -104,12 +104,12 @@ $('.ctrlTemp .down').click(function () {
 })
 // 升温
 $('.ctrlTemp .up').click(function () {
-    let currentTemp = parseInt($('.temp span').text()) - 16;
+    let currentTemp = parseInt($('.main-onoff').text()) - 16;
     if (currentTemp == 14) {
         alert('不能再升温了!'); // 30摄氏度
     } else {
 
-        let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
+        let currentMode = parseInt($('.main-mode span').data("mode"));  // 0 - 4 
         let currentDirect = parseInt($('.direct span').data("direct"));
         let currentWind = parseInt($('.wind span').data("wind"));
         let setTemp = currentTemp + 1;
@@ -238,7 +238,7 @@ $('.ctrlOthers .modeBtn').click(function () {
 // 切换空调风向 // 自动 风向1 风向2 风向3 风向4
 $('.ctrlOthers .directBtn').click(function () {
     let currentTemp = parseInt($('.main-onoff').text()) - 16;
-    let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
+    let currentMode = parseInt($('.main-mode span').data("mode"));  // 0 - 4 
     let currentDirect = parseInt($('.direct span').data("direct")); // 0 - 4
     let currentWind = parseInt($('.wind span').data("wind")); // 0 - 3
 
@@ -300,7 +300,7 @@ $('.ctrlOthers .directBtn').click(function () {
 // 切换空调风速 // 自动 风速1 风速2 风速3
 $('.ctrlOthers .windBtn').click(function () {
     let currentTemp = parseInt($('.main-onoff').text()) - 16;
-    let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
+    let currentMode = parseInt($('.main-mode span').data("mode"));  // 0 - 4 
     let currentDirect = parseInt($('.direct span').data("direct"));
     let currentWind = parseInt($('.wind span').data("wind"));
 
