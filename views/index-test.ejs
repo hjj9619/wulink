@@ -90,11 +90,38 @@
 
                     <div class="mode">
                         <div class="mode-bar">
-                            <span class="auto"></span>
-                            <span class="cold"></span>
-                            <span class="dehumidify"></span>
-                            <span class="blower"></span>
-                            <span class="produceHeat"></span>
+
+                            <% if(mode === 0){ %>
+                            <span class="auto" style="background-image: url(../images/自动模式.png)"></span>
+                            <span class="cold" style="background-image: url(../images/制冷-gray.png)"></span>
+                            <span class="dehumidify" style="background-image: url(../images/除湿-gray.png)"></span>
+                            <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>
+                            <span class="produceHeat" style="background-image: url(../images/制热-gray.png)"></span>
+                            <% } else if( mode === 1){ %>
+                            <span class="auto" style="background-image: url(../images/自动模式-gray.png)"></span>
+                            <span class="cold" style="background-image: url(../images/制冷.png)"></span>
+                            <span class="dehumidify" style="background-image: url(../images/除湿-gray.png)"></span>
+                            <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>
+                            <span class="produceHeat" style="background-image: url(../images/制热-gray.png)"></span>
+                            <% } else if( mode === 2){ %>
+                            <span class="auto" style="background-image: url(../images/自动模式-grya.png)"></span>
+                            <span class="cold" style="background-image: url(../images/制冷-gray.png)"></span>
+                            <span class="dehumidify" style="background-image: url(../images/除湿.png)"></span>
+                            <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>
+                            <span class="produceHeat" style="background-image: url(../images/制热-gray.png)"></span>
+                            <% } else if( mode === 3){ %>
+                            <span class="auto" style="background-image: url(../images/自动模式-gray.png)"></span>
+                            <span class="cold" style="background-image: url(../images/制冷-gray.png)"></span>
+                            <span class="dehumidify" style="background-image: url(../images/除湿-gray.png)"></span>
+                            <span class="blower" style="background-image: url(../images/送风.png)"></span>
+                            <span class="produceHeat" style="background-image: url(../images/制热-gray.png)"></span>
+                            <% } else if( mode === 4){ %>
+                            <span class="auto" style="background-image: url(../images/自动模式-gray.png)"></span>
+                            <span class="cold" style="background-image: url(../images/制冷-gray.png)"></span>
+                            <span class="dehumidify" style="background-image: url(../images/除湿-gray.png)"></span>
+                            <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>
+                            <span class="produceHeat" style="background-image: url(../images/制热.png)"></span>
+                            <% } %>
                         </div>
 
                     </div>
@@ -107,11 +134,11 @@
                         开关】 0 开，1 关 
                     开关：
                     <% if( onoff == 0 ){ %>
-                    <span class="green">打开状态</span>
-                    <% }else if( onoff == 1 ){ %>
-                    <span class="red">关闭状态</span>
-                    <% } %>
-                </div> -->
+                            <span class="green">打开状态</span>
+                            <% }else if( onoff == 1 ){ %>
+                            <span class="red">关闭状态</span>
+                            <% } %>
+                        </div> -->
             </div>
         </div>
         <div class="onoffBtn">

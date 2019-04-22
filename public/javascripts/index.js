@@ -110,7 +110,7 @@ $('.ctrlOthers .modeBtn').click(function () {
 
     if (online == 1) {
         if (Number(onoff) === 0) {  // 开机状态
-            let currentTemp = parseInt($('main-onoff').text()) - 16;
+            let currentTemp = parseInt($('.main-onoff').text()) - 16;
             let currentMode = parseInt($('.main-mode span').data("mode"));  // 0 - 4
             let currentDirect = parseInt($('.direct span').data("direct"));
             let currentWind = parseInt($('.wind span').data("wind"));
@@ -139,11 +139,11 @@ $('.ctrlOthers .modeBtn').click(function () {
                 } else {
                     console.log(data);
                     let modeName;
-                    $('.mode-bar .auto').css("background-image", "../images/自动模式-gray.png")
-                    $('.mode-bar .cold').css("background-image", "../images/制冷-gray.png")
-                    $('.mode-bar .dehumidify').css("background-image", "../images/除湿-gray.png")
-                    $('.mode-bar .blower').css("background-image", "../images/送风-gray.png")
-                    $('.mode-bar .produceHeat').css("background-image", "../images/制热-gray.png")
+                    $('.mode-bar .auto').css("background-image", "url(../images/自动模式-gray.png)");
+                    $('.mode-bar .cold').css("background-image", "url(../images/制冷-gray.png)");
+                    $('.mode-bar .dehumidify').css("background-image", "url(../images/除湿-gray.png)");
+                    $('.mode-bar .blower').css("background-image", "url(../images/送风-gray.png)");
+                    $('.mode-bar .produceHeat').css("background-image", "url(../images/制热-gray.png)");
 
                     //auto 自动
                     //cold 制冷
