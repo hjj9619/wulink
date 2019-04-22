@@ -460,6 +460,7 @@ $(".menu-bar .match-pro").click(function () {
     $.post("/air/red", JSON.stringify({ "cmd": "match_process" }), function (data, status) {
         console.log(data);
         $(".match-proccess").hide();
+        $('.menu-bar').hide();
         console.log(status + "AJAX");
     });
 });

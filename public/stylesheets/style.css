@@ -206,8 +206,12 @@ body{
 }
 
 .menu-btn{
-    background: rebeccapurple;
     position: absolute;
     right: 0;
     top: 100px;
+    text-indent: -20000px;
+    display: block;
+    width:32px;
+    height: 32px;
+    background: url('../images/menu.png') no-repeat;
 }
