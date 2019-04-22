@@ -92,11 +92,21 @@
                         <div class="mode-bar">
 
                             <% if(mode === 0){ %>
+
+                            <% if(onoff === 1){ %>
+                            <span class="auto" style="background-image: url(../images/自动模式-gray.png)"></span>
+                            <span class="cold" style="background-image: url(../images/制冷-gray.png)"></span>
+                            <span class="dehumidify" style="background-image: url(../images/除湿-gray.png)"></span>
+                            <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>
+                            <span class="produceHeat" style="background-image: url(../images/制热-gray.png)"></span>
+                            <% }else{ %>
                             <span class="auto" style="background-image: url(../images/自动模式.png)"></span>
                             <span class="cold" style="background-image: url(../images/制冷-gray.png)"></span>
                             <span class="dehumidify" style="background-image: url(../images/除湿-gray.png)"></span>
                             <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>
                             <span class="produceHeat" style="background-image: url(../images/制热-gray.png)"></span>
+                            <% } %>
+
                             <% } else if( mode === 1){ %>
                             <span class="auto" style="background-image: url(../images/自动模式-gray.png)"></span>
                             <span class="cold" style="background-image: url(../images/制冷.png)"></span>
@@ -104,7 +114,7 @@
                             <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>
                             <span class="produceHeat" style="background-image: url(../images/制热-gray.png)"></span>
                             <% } else if( mode === 2){ %>
-                            <span class="auto" style="background-image: url(../images/自动模式-grya.png)"></span>
+                            <span class="auto" style="background-image: url(../images/自动模式-gray.png)"></span>
                             <span class="cold" style="background-image: url(../images/制冷-gray.png)"></span>
                             <span class="dehumidify" style="background-image: url(../images/除湿.png)"></span>
                             <span class="blower" style="background-image: url(../images/送风-gray.png)"></span>

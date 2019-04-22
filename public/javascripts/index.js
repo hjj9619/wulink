@@ -9,6 +9,7 @@ $("#on").click(function () {
         console.log(data);
         if (!data.errcode) {
             $('.main-onoff').text(currentTemp + 16 + "℃");
+            $('.main-onoff').data("onoff", onoff);
         } else {
             console.log(data);
         }
