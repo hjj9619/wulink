@@ -94,7 +94,7 @@ $('.ctrlTemp .down').click(function () {
                 console.log(data);
             } else {
                 console.log(data);
-                $('.main-onoff').text(setTemp + 16);
+                $('.main-onoff').text(setTemp + 16 + " ℃");
             }
         })
     }
@@ -131,7 +131,7 @@ $('.ctrlTemp .up').click(function () {
 
             } else {
                 console.log(data);
-                $('.main-onoff').text(setTemp + 16);
+                $('.main-onoff').text(setTemp + 16 + " ℃");
             }
         })
     }
