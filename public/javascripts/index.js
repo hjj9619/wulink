@@ -14,6 +14,7 @@ $("#on").click(function () {
 
             $('.main-onoff').text(currentTemp + 16 + " ℃");
             $('.main-onoff').data("onoff", onoff);
+            $('.main>div>div.row').addClass("text-primary");
 
             switch (parseInt(currentMode)) {
                 case 0:
@@ -52,6 +53,8 @@ $("#off").click(function () {
         if (!data.errcode) { // errorcode = 0, 代表请求成功
             $('.main-onoff').text("待机");
             $('.main-onoff').data("onoff", onoff);
+
+            $('.main>div>div.row').addClass("text-muted");
 
             $('.mode-bar .auto').css("background-image", "url(../images/自动模式-gray.png)")
             $('.mode-bar .cold').css("background-image", "url(../images/制冷-gray.png)")
