@@ -2,7 +2,7 @@
 
 
 $("#on").click(function () {
-    // let currentTemp = parseInt($('.temp span').text()) - 16;
+    // let currentTemp = parseInt($('.main-onoff').text()) - 16;
     let currentTemp = 0;
     let onoff = 0;
     $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
@@ -42,7 +42,8 @@ $("#on").click(function () {
     });
 });
 $("#off").click(function () {
-    // let currentTemp = parseInt($('.temp span').text()) - 16;
+    let currentTemp = parseInt($('.main-onoff').text()) - 16;
+
     let currentTemp = 0;
     let onoff = 1;
 
