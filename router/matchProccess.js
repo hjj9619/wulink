@@ -1,5 +1,6 @@
 let express = require("express");
 let router = express.Router();
+let { getDeviceInfo, setDeviceInfo, connecteWifi } = require("../libs/ctrl");
 
 // match_process
 router.post('/', function (req, res) {
@@ -23,7 +24,7 @@ router.post('/', function (req, res) {
             } else {
               setTimeout(function () {
                 clearInterval(timer);
-                res.redirect(301, '/air/red_fail');
+                // res.redirect(301, '/air/red_fail');
                 console.log(" 红外匹配失败！ ");
                 // res.send( body );
                 console.log(body);

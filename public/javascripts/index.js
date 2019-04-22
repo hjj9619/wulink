@@ -8,20 +8,21 @@ $("#on").click(function () {
     $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
         console.log(data);
         if (!data.errcode) {
-            $('.onoff span').text("打开状态").removeClass('red').addClass('green');
+            $('.main-onoff').text(currentTemp + "℃");
         } else {
             console.log(data);
         }
     });
 });
 $("#off").click(function () {
-    let currentTemp = parseInt($('.temp span').text()) - 16;
+    // let currentTemp = parseInt($('.temp span').text()) - 16;
+    let currentTemp = 0;
     let onoff = 1;
 
     $.post("/air/off", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
         console.log(data);
         if (!data.errcode) { // errorcode = 0, 代表请求成功
-            $('.onoff span').text("关闭状态").removeClass('green').addClass('red');
+            $('.main-onoff').text("待机");
         }
     });
 
@@ -110,7 +111,7 @@ $('.ctrlOthers .modeBtn').click(function () {
     if (online == 1) {
         if (Number(onoff) === 0) {  // 开机状态
             let currentTemp = parseInt($('main-onoff').text()) - 16;
-            let currentMode = parseInt($('.mode span').data("mode"));  // 0 - 4 
+            let currentMode = parseInt($('.main-mode span').data("mode"));  // 0 - 4
             let currentDirect = parseInt($('.direct span').data("direct"));
             let currentWind = parseInt($('.wind span').data("wind"));
 
@@ -153,29 +154,29 @@ $('.ctrlOthers .modeBtn').click(function () {
                     switch (parseInt(setMode)) {
                         case 0:
                             modeName = "自动";
-                            $('.mode-bar .auto').css("background-image", "../images/自动模式.png")
+                            $('.mode-bar .auto').css("background-image", "url(../images/自动模式.png)")
                             break;
                         case 1:
                             modeName = "制冷";
-                            $('.mode-bar .cold').css("background-image", "../images/制冷.png")
+                            $('.mode-bar .cold').css("background-image", "url(../images/制冷.png)")
                             break;
                         case 2:
                             modeName = "除湿";
-                            $('.mode-bar .dehumidify').css("background-image", "../images/除湿.png")
+                            $('.mode-bar .dehumidify').css("background-image", "url(../images/除湿.png)")
                             break;
                         case 3:
                             modeName = "送风";
-                            $('.mode-bar .blower').css("background-image", "../images/送风.png")
+                            $('.mode-bar .blower').css("background-image", "url(../images/送风.png)")
                             break;
                         case 4:
                             modeName = "制热";
-                            $('.mode-bar .produceHeat').css("background-image", "../images/制热.png")
+                            $('.mode-bar .produceHeat').css("background-image", "url(../images/制热.png)")
                             break;
                     }
 
 
-                    $('.mode span').text(modeName);
-                    $('.mode span').data('mode', setMode);
+                    $('.main-mode span').text(modeName);
+                    $('.main-mode span').data('mode', setMode);
                 }
 
             })
