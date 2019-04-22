@@ -23,8 +23,10 @@ let { getDeviceInfo, setDeviceInfo, connecteWifi } = require("./libs/ctrl");
 
 
 
-
-app.listen(4000);
+const port = 3000;
+app.listen(port, () => {
+    console.log("http://localhost:" + port + "/air");
+});
 
 // app.get('/air', (req, res) => {
 //     res.render('index-test', {
@@ -36,7 +38,6 @@ app.listen(4000);
 //         onoff: 0
 //     });
 // })
-
 
 
 
@@ -302,3 +303,4 @@ app.get('/air/red_fail', function (req, res) {
 // match_process
 let matchProccess = require('./router/matchProccess');
 app.use('/air/red', matchProccess);
+

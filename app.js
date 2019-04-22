@@ -23,8 +23,22 @@ let { getDeviceInfo, setDeviceInfo, connecteWifi } = require("./libs/ctrl");
 
 
 
-
-app.listen(3000);
+const port = 3000;
+app.listen(port, () => {
+  console.log("http://localhost:" + port + "/air");
+});
+/*
+app.get('/air', (req, res) => {
+  res.render('index-test', {
+    online: 1,
+    temp: 0,
+    mode: 1,
+    direct: 0,
+    wind: 0,
+    onoff: 0
+  });
+})
+*/
 
 
 // 空调首页
@@ -34,13 +48,13 @@ app.get('/air', function (req, res) {
   getDeviceInfo('Wukong', '808600016928', 'get', 'air_ctrl').then(function (body) {
     getDeviceInfo('Wukong', '808600016928', 'get', 'online').then(function (onLineBody) {
 
-      console.log(typeof onLineBody); // Object  
+      console.log(typeof onLineBody); // Object
       console.log(onLineBody.data.online); // 1
 
       online = onLineBody.data.online;
       body.data['online'] = online;
       console.log(body.data);
-      res.render('index', body.data);
+      res.render('index-test', body.data);
     }).catch(function (err) {
       if (err) console.log(err);
     });
@@ -49,6 +63,9 @@ app.get('/air', function (req, res) {
   });
 
 })
+
+
+
 
 
 
@@ -73,7 +90,7 @@ app.post('/air/off', function (req, res) {
     console.log(obj);
 
     //808600016928
-    // "Wukong", "808600016928", "set", "air_ctrl", 1 
+    // "Wukong", "808600016928", "set", "air_ctrl", 1
     setDeviceInfo('808600016928', obj).then(function (data) {
       res.send(data);
     });
@@ -156,7 +173,6 @@ app.post('/air/temp/down', function (req, res) {
 
 })
 
-
 /// 升温
 app.post('/air/temp/up', function (req, res) {
   getDeviceInfo("Wukong", "808600016928", "get", "air_ctrl").then(function (data) {
@@ -180,8 +196,7 @@ app.post('/air/temp/up', function (req, res) {
   })
 })
 
-
-// 切换空调工作模式  0自动 1制冷 2除湿 3送风 4制热 
+// 切换空调工作模式  0自动 1制冷 2除湿 3送风 4制热
 app.post('/air/mode', function (req, res) {
 
 
@@ -278,11 +293,9 @@ app.post('/air/addtimer', function (req, res) {
 
 
 
-
 //////////////////////////////////////////////////////////////////////
 /////////////////////   【以下代码需要大量优化】 /////////////////////////
 //////////////////////////////////////////////////////////////////////
-
 app.get('/air/red_fail', function (req, res) {
   res.render('red_fail');
 })

@@ -26,10 +26,10 @@
             <div class="main">
                 <div class="col-xs-12">
                     <% if( onoff == 1 ){ %>
-                    <span data-onoff=<%= onoff %> class="main-onoff">待机</span>
+                    <span data-temp=<%= temp %> data-onoff=<%= onoff %> class="main-onoff">待机</span>
                     <% }else{ %>
                     <!--【温度】 16-30, 0-14 -->
-                    <span data-onoff=<%= onoff %> class="main-onoff"><%= temp + 16 %> ℃</span>
+                    <span data-temp=<%= temp %> data-onoff=<%= onoff %> class="main-onoff"><%= temp + 16 %> ℃</span>
                     <% } %>
                     <!-- row text-primary -->
                     <div class="row  <% if (onoff===0){ %> text-primary  <%}else{%> text-muted <% } %>">
@@ -137,48 +137,55 @@
 
                     </div>
                 </div>
-
-
-
-
-                <!-- <div class="onoff">
-                        开关】 0 开，1 关 
-                    开关：
-                    <% if( onoff == 0 ){ %>
-                            <span class="green">打开状态</span>
-                            <% }else if( onoff == 1 ){ %>
-                            <span class="red">关闭状态</span>
-                            <% } %>
-                        </div> -->
             </div>
         </div>
-        <div class="onoffBtn">
-            <!-- 【开关】 0 开，1 关 -->
 
-            <button class="on" id="on">开</button>
+        <div class="row onoffBtn">
 
-            <button class="off" id="off">关</button>
+            <% if( onoff === 0 ){ %>
+            <div class="col-xs-6">
+                <!-- 【开关】 0 开，1 关 -->
+                <button class="btn btn-primary btn-block disabled on" id="on">开</button>
+            </div>
+            <div class="col-xs-6">
+                <button class="btn btn-primary btn-block off" id="off">关</button>
+            </div>
+            <% }else{ %>
+            <div class="col-xs-6">
+                <!-- 【开关】 0 开，1 关 -->
+                <button class="btn btn-primary btn-block on" id="on">开</button>
+            </div>
+            <div class="col-xs-6">
+                <button class="btn btn-primary btn-block disabled off" id="off">关</button>
+            </div>
+            <% } %>
+
         </div>
 
-        <div class="ctrl">
-            <div class="ctrlOthers">
-                <button class="modeBtn">模式</button>
-                <button class="directBtn">风向</button>
-                <button class="windBtn">风速</button>
+        <div class="row ctrl">
+            <div class="col-xs-6 ctrlOthers">
+                <button class="btn modeBtn">模式</button>
+                <button class="btn directBtn">风向</button>
+                <button class="btn windBtn">风速</button>
             </div>
-            <div class="ctrlTemp">
-                <button class="up"> + </button>
-                <button class="down"> - </button>
-            </div>
-            <div class="ctrlTimer" style="display:none;">
-                <button class="addTimer">
+
+
+            <!-- <div class="col-xs-4 ctrlTimer">
+                <button class="addTimer" style="display:none;">
                     Add
                 </button>
-                <button class="clearTimer">
+                <button class="clearTimer" style="display:none;">
                     Clear
                 </button>
+            </div> -->
+
+            <div class="col-xs-6 ctrlTemp">
+                <button class="btn up"> + </button>
+                <button class="btn none"></button>
+                <button class="btn down"> - </button>
             </div>
         </div>
+
 
     </div>
 

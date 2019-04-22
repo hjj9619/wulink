@@ -12,35 +12,9 @@ body, div, ul, li, button, span, input{
 
 body{
     width:100%;
-    max-width: 360px;
+    max-width: 500px;
 }
 
-/* body{
-    width: 340px;
-    height: 620px;
-} */
-/* .container{
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
-} */
-
-/* .main{
-    width: 240px;
-    height: 240px;
-    border: 1px solid green;
-    border-radius: 50%;
-    margin: 10px auto;
-} */
-/* .main .temp{
-    width: 100%;
-    height: 45%;
-    border: 1px solid yellow;
-    color: red;
-    text-align: center;
-    line-height: 100px;
-    margin-top: 20px;
-} */
 .main .main-onoff{
     display: block;
     font-size: 4em;
@@ -63,11 +37,6 @@ body{
     height: 50px;
     box-sizing: border-box;
 }
-
-/* 
-.snowflake-o  制冷
-
-*/
 .mode-bar span.auto{
     background-image: url(../images/自动模式-gray.png);
     background-position: 6px;
@@ -111,50 +80,99 @@ body{
 }
 
 
-.onoffBtn{
-    height: 50px;
-    border: 1px solid yellowgreen;
+.onoffBtn .col-xs-6:first-child{
+    /* height: 50px; */
+    /* border: 1px solid yellowgreen; */
+    padding-right: 0;
+
+}
+.onoffBtn .col-xs-6:last-child{
+    /* height: 50px; */
+    /* border: 1px solid yellowgreen; */
+    padding-left: 0;
 
 }
 .onoffBtn .on, .onoffBtn .off{
-    width: 50%;
-    height: 100%;
-    color: 20px;
-    display: block;
-    float: left;
+    margin: 10px auto;
 }
-
 
 
 .ctrl{
-    height: 200px;
-    border: 1px red solid;
+    /* height: 200px; */
+    /* border: 1px red solid; */
 }
-.ctrl .ctrlOthers, .ctrl .ctrlTemp{
-    float: left;
-}
-.ctrl .ctrlTemp, .ctrl .ctrlOthers, .ctrl .ctrlTimer{
+/* .ctrl .ctrlOthers, .ctrl .ctrlTemp{
+    float: left; 
+} */
+/* .ctrl .ctrlTemp, .ctrl .ctrlOthers, .ctrl .ctrlTimer{
     width: 33.33%;
     height: 100%;
     border: 1px yellow solid;
-}
+} */
+/* 
 .ctrl .ctrlTemp button{
     display: block;
     height: 50%;
     width: 100%;
     font-size: 4em;
-}
+} */
+/* 
 .ctrl .ctrlOthers button{
     display: block;
     height: 33.333333%;
     width: 100%;
     font-size: 3em;
-}
+} */
+/* 
 .ctrl .ctrlTimer button{
     display: block;
     height: 50%;
     width: 100%;
     font-size: 4em;
+} */
+
+
+.ctrlOthers button, .ctrlTemp button{
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    text-indent: -2000px;
+}
+.ctrlOthers .modeBtn{
+    background-image: url('../images/模式切换.png');
+    background-repeat: no-repeat;
+    background-position: 11px 11px;
+}
+
+.ctrlOthers .directBtn{
+    background-image: url('../images/风向切换.png');
+    background-repeat: no-repeat;
+    background-position: 11px 11px;
+}
+
+.ctrlOthers .windBtn{
+    background-image: url('../images/风速切换.png');
+    background-repeat: no-repeat;
+    background-position: 11px 11px;
+}
+
+
+
+.ctrlTemp .up{
+    background-image: url('../images/温度+.png');
+    background-repeat: no-repeat;
+    background-position: 11px 11px;
+}
+
+.ctrlTemp .down{
+    background-image: url('../images/温度-.png');
+    background-repeat: no-repeat;
+    background-position: 11px 11px;
+}
+
+.ctrlTemp .none{
+    touch-action: none;
 }
 
 
