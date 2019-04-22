@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Air_Ctrl</title>
-    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
-  </head>
-  <body>
 
-    
-    
+<head>
+  <title>Air_Ctrl</title>
+  <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+</head>
 
-    <input type="text" id="ssid">
-    <input type="text" id="pwd">
-    <button id="wifi"> 配置 WiFi </button>
-    <button id="red">匹配红外遥控器</button>
-  </body>
+<body>
 
-  <script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
-  <script>
-    
 
-    let conf = {
-      "SSID": "", 
-      "PWD": ""
-    }
-    $('#ssid').change(function(){
-      conf.SSID = $('#ssid').val();
-    })
-    $('#pwd').change(function(){
-      conf.PWD = $('#pwd').val();
-    })
-    $("#wifi").click(function(){
-      $.post("/air/wifi", JSON.stringify( conf ), function(data,status){
-        console.log( data );
-        console.log( status + "AJAX" );
-      });
+
+
+  <input type="text" id="ssid">
+  <input type="text" id="pwd">
+  <button id="wifi"> 配置 WiFi </button>
+  <button id="red">匹配红外遥控器</button>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/2.2.2/jquery.min.js"></script>
+<script>
+
+
+  let conf = {
+    "SSID": "",
+    "PWD": ""
+  }
+  $('#ssid').change(function () {
+    conf.SSID = $('#ssid').val();
+  })
+  $('#pwd').change(function () {
+    conf.PWD = $('#pwd').val();
+  })
+  $("#wifi").click(function () {
+    $.post("/air/wifi", JSON.stringify(conf), function (data, status) {
+      console.log(data);
+      console.log(status + "AJAX");
     });
-    $("#red").click(function(){
-      $.post("/air/red", JSON.stringify({"cmd": "match_process"}), function(data,status){
-        console.log( data );
-        console.log( status + "AJAX" );
-      });
+  });
+  $("#red").click(function () {
+    $.post("/air/red", JSON.stringify({ "cmd": "match_process" }), function (data, status) {
+      console.log(data);
+      console.log(status + "AJAX");
     });
+  });
 
-  </script>
+</script>
+
 </html>

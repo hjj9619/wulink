@@ -13,7 +13,28 @@ body, div, ul, li, button, span, input{
 body{
     width:100%;
     max-width: 500px;
+    position: absolute;
+    height: 100%;
 }
+
+
+
+.airStatus{
+    height: 30px;
+    text-align: center;
+    line-height: 17px;
+    margin-top: 10px;
+}
+.airStatus span{
+    text-indent: -1000000px;
+    border-radius: 50%;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+
+
+
 
 .main .main-onoff{
     display: block;
@@ -97,41 +118,6 @@ body{
 }
 
 
-.ctrl{
-    /* height: 200px; */
-    /* border: 1px red solid; */
-}
-/* .ctrl .ctrlOthers, .ctrl .ctrlTemp{
-    float: left; 
-} */
-/* .ctrl .ctrlTemp, .ctrl .ctrlOthers, .ctrl .ctrlTimer{
-    width: 33.33%;
-    height: 100%;
-    border: 1px yellow solid;
-} */
-/* 
-.ctrl .ctrlTemp button{
-    display: block;
-    height: 50%;
-    width: 100%;
-    font-size: 4em;
-} */
-/* 
-.ctrl .ctrlOthers button{
-    display: block;
-    height: 33.333333%;
-    width: 100%;
-    font-size: 3em;
-} */
-/* 
-.ctrl .ctrlTimer button{
-    display: block;
-    height: 50%;
-    width: 100%;
-    font-size: 4em;
-} */
-
-
 .ctrlOthers button, .ctrlTemp button{
     display: block;
     width: 70px;
@@ -185,47 +171,43 @@ body{
 
 
 
-.airStatus{
-    height: 30px;
-    text-align: center;
-    line-height: 17px;
-    margin-top: 10px;
-}
-.airStatus span{
-    text-indent: -1000000px;
-    border-radius: 50%;
-    display: inline-block;
-    width: 15px;
-    height: 15px;
+/* 菜单 */
+.menu-bar{
+    color: #fff;
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
 }
 
+.menu-bar .menu-list li{
+    line-height: 50px;
+    font-size: 1.3em;
+    padding-left: 10px;
+    z-index: 99998;
+    border-bottom: 1px solid #fff;
+}
 
 
-/* 
-<div class="row onoffBtn">
 
 
+/* 匹配红外 */
+.match-proccess{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+}
 
-
-            <% if( onoff === 0 ){ %>
-            <div class="col-xs-6">
-                <!-- 【开关】 0 开，1 关 -->
-                <button class="btn btn-primary btn-block disabled on" id="on">开</button>
-            </div>
-            <div class="col-xs-6">
-                <button class="btn btn-primary btn-block off" id="off">关</button>
-            </div>
-            <% }else{ %>
-            <div class="col-xs-6">
-                <!-- 【开关】 0 开，1 关 -->
-                <button class="btn btn-primary btn-block on" id="on">开</button>
-            </div>
-            <div class="col-xs-6">
-                <button class="btn btn-primary btn-block disabled off" id="off">关</button>
-            </div>
-            <% } %>
-
-        </div>
-
-
-*/
+.menu-btn{
+    background: rebeccapurple;
+    position: absolute;
+    right: 0;
+    top: 100px;
+}

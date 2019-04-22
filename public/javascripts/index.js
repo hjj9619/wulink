@@ -69,7 +69,6 @@ $('.onoffBtn').click(function () {
 
             }
         });
-
     }
 })
 
@@ -434,3 +433,33 @@ $('.ctrlOthers .windBtn').click(function () {
 
 
 })
+
+
+
+
+// 呼出菜单
+
+
+
+$('.menu-btn').click(function () {
+    let menuBar = $('.menu-bar').css('display');
+    if (menuBar == "none") {
+        $('.menu-bar').show()
+
+    } else {
+        $('.menu-bar').hide()
+
+    }
+
+})
+
+//匹配红外遥控器
+
+$(".menu-bar .match-pro").click(function () {
+    $('.match-proccess').show();
+    $.post("/air/red", JSON.stringify({ "cmd": "match_process" }), function (data, status) {
+        console.log(data);
+        $(".match-proccess").hide();
+        console.log(status + "AJAX");
+    });
+});
