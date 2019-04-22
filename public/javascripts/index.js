@@ -52,6 +52,12 @@ $("#off").click(function () {
             $('.main-onoff').text("待机");
             $('.main-onoff').data("onoff", onoff);
 
+            $('.mode-bar .auto').css("background-image", "url(../images/自动模式-gray.png)")
+            $('.mode-bar .cold').css("background-image", "url(../images/制冷-gray.png)")
+            $('.mode-bar .dehumidify').css("background-image", "url(../images/除湿-gray.png)")
+            $('.mode-bar .blower').css("background-image", "url(../images/送风-gray.png)")
+            $('.mode-bar .produceHeat').css("background-image", "url(../images/制热-gray.png)")
+
         }
     });
 
