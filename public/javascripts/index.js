@@ -8,8 +8,34 @@ $("#on").click(function () {
     $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
         console.log(data);
         if (!data.errcode) {
+
+            let currentMode = $('.main-mode span').data('mode');
+
+
             $('.main-onoff').text(currentTemp + 16 + "℃");
             $('.main-onoff').data("onoff", onoff);
+
+            switch (parseInt(currentMode)) {
+                case 0:
+                    $('.mode-bar .auto').css("background-image", "url(../images/自动模式.png)")
+                    break;
+                case 1:
+                    $('.mode-bar .cold').css("background-image", "url(../images/制冷.png)")
+                    break;
+                case 2:
+                    $('.mode-bar .dehumidify').css("background-image", "url(../images/除湿.png)")
+                    break;
+                case 3:
+                    $('.mode-bar .blower').css("background-image", "url(../images/送风.png)")
+                    break;
+                case 4:
+                    $('.mode-bar .produceHeat').css("background-image", "url(../images/制热.png)")
+                    break;
+            }
+
+
+
+
         } else {
             console.log(data);
         }
@@ -24,6 +50,8 @@ $("#off").click(function () {
         console.log(data);
         if (!data.errcode) { // errorcode = 0, 代表请求成功
             $('.main-onoff').text("待机");
+            $('.main-onoff').data("onoff", onoff);
+
         }
     });
 
