@@ -1,5 +1,77 @@
 
+$('.onoffBtn').click(function () {
+    let onoff = $('.main span').data("onoff");
+    if (onoff === 1) {  // 关机状态，需要开机 
+        // let currentTemp = parseInt($('.main-onoff').text()) - 16;
+        let currentTemp = parseInt($('.main-onoff').data('temp'));
+        let onoff = 0;
+        $.post("/air/on", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
+            console.log(data);
+            if (!data.errcode) {
 
+                let currentMode = $('.main-mode span').data('mode');
+
+
+                $('.main-onoff').text(currentTemp + 16 + " ℃");
+                $('.main-onoff').data("onoff", onoff);
+                // $('.main-onoff').data("temp", currentTemp);
+
+                $('.main>div>div.row').removeClass("text-muted").addClass("text-primary");
+                $('.onoffBtn #off').removeClass('disabled');
+                $('.onoffBtn #on').addClass('disabled');
+
+                switch (parseInt(currentMode)) {
+                    case 0:
+                        $('.mode-bar .auto').css("background-image", "url(../images/自动模式.png)")
+                        break;
+                    case 1:
+                        $('.mode-bar .cold').css("background-image", "url(../images/制冷.png)")
+                        break;
+                    case 2:
+                        $('.mode-bar .dehumidify').css("background-image", "url(../images/除湿.png)")
+                        break;
+                    case 3:
+                        $('.mode-bar .blower').css("background-image", "url(../images/送风.png)")
+                        break;
+                    case 4:
+                        $('.mode-bar .produceHeat').css("background-image", "url(../images/制热.png)")
+                        break;
+                }
+
+            } else {
+                console.log(data);
+            }
+        });
+
+    } else { // 开机状态，需要关机
+
+        let currentTemp = parseInt($('.main-onoff').text()) - 16;
+        let onoff = 1;
+
+        $.post("/air/off", JSON.stringify({ setTemp: currentTemp, onoff: onoff }), function (data, status) {
+            console.log(data);
+
+            if (!data.errcode) { // errorcode = 0, 代表请求成功
+                $('.main-onoff').text("待机");
+                $('.main-onoff').data("onoff", onoff);
+
+                $('.main>div>div.row').removeClass("text-primary").addClass("text-muted");
+
+                $('.onoffBtn #on').removeClass('disabled');
+                $('.onoffBtn #off').addClass('disabled');
+
+
+                $('.mode-bar .auto').css("background-image", "url(../images/自动模式-gray.png)")
+                $('.mode-bar .cold').css("background-image", "url(../images/制冷-gray.png)")
+                $('.mode-bar .dehumidify').css("background-image", "url(../images/除湿-gray.png)")
+                $('.mode-bar .blower').css("background-image", "url(../images/送风-gray.png)")
+                $('.mode-bar .produceHeat').css("background-image", "url(../images/制热-gray.png)")
+
+            }
+        });
+
+    }
+})
 
 $("#on").click(function () {
 
